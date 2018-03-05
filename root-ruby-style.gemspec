@@ -1,0 +1,14 @@
+lib = File.expand_path("../lib", __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+Gem::Specification.new do |gem|
+  gem.name          = "root_ruby_style"
+  gem.version       = "0.0.1"
+  gem.authors       = ["Root Devs"]
+  gem.email         = ["devs@joinroot.com"]
+
+  gem.summary       = "Root's Ruby/Rails Style Guide"
+
+  gem.add_development_dependency "rubocop", "0.49.0"
+  gem.add_development_dependency "rspec-rails", "~> 3.3"
+end
