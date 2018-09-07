@@ -4,7 +4,7 @@ module RootCops
 
     def investigate(processed_source)
       file_path = processed_source.buffer.name
-      return unless file_path.match?(/shared_contexts/)
+      return unless file_path =~ /shared_contexts/
 
       file_paths = File.expand_path(file_path).chomp(".rb").split("/")
       relevant_paths = file_paths[(file_paths.index("shared_contexts") + 1)..-1]
@@ -21,7 +21,7 @@ module RootCops
       method_args = *args[0]
       context_name = method_args[0].to_s
       unless context_name == @base_name || context_name.start_with?(@expected_context_prefix)
-        add_offense(node, :expression, PREFIX_OR_MATCH)
+        add_offense(node, :location => :expression, :message => PREFIX_OR_MATCH)
       end
     end
   end

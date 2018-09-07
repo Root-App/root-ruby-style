@@ -12,7 +12,7 @@ module RootCops
       return unless receiver_name == :RSpec && method_name == :describe
 
       unless @file_path.end_with?("_spec.rb")
-        add_offense(node, :expression, FILE_NAME_ERROR)
+        add_offense(node, :location => :expression, :message => FILE_NAME_ERROR)
       end
     end
   end

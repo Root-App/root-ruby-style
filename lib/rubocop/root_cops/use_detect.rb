@@ -7,7 +7,7 @@ module RootCops
       method_call_receiving_a_block = expanded_node[0]
       _receiver, method_name = *method_call_receiving_a_block
       if method_name == :find
-        add_offense(node, :expression, MSG)
+        add_offense(node, :location => :expression, :message => MSG)
       end
     end
   end

@@ -7,7 +7,7 @@ module RootCops
       _, name = *receiver
 
       if name == :ENV && method_name == :[]
-        add_offense(node, :expression, MSG)
+        add_offense(node, :location => :expression, :message => MSG)
       end
     end
   end

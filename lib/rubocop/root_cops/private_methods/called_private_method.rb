@@ -6,7 +6,7 @@ module RootCops
       def on_send(node)
         receiver, method_name = *node
         if receiver && (method_name =~ /^_/)
-          add_offense(node, :selector, MSG)
+          add_offense(node, :location => :selector, :message => MSG)
         end
       end
     end

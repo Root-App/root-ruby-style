@@ -4,8 +4,8 @@ module RootCops
 
     def on_send(node)
       _receiver, method_name = *node
-      if %I[try try!].include?(method_name)
-        add_offense(node, :expression, MSG)
+      if %i[try try!].include?(method_name)
+        add_offense(node, :location => :expression, :message => MSG)
       end
     end
   end

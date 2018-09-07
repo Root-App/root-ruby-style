@@ -54,6 +54,11 @@ Metrics/ParameterLists:
 Metrics/PerceivedComplexity:
   Enabled: false
 
+# prefixes should be avoided before predicates in general, but they make sense
+# in some cases, particularly if an arg is being passed to the method
+Naming/PredicateName:
+  Enabled: false
+
 Performance/Casecmp:
   Enabled: false
 
@@ -96,11 +101,6 @@ Style/IfUnlessModifier:
 
 Style/NumericLiterals:
   MinDigits: 6
-
-# prefixes should be avoided before predicates in general, but they make sense
-# in some cases, particularly if an arg is being passed to the method
-Style/PredicateName:
-  Enabled: false
 
 # use raise to raise an exception
 Style/SignalException:

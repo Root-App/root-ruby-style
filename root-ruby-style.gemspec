@@ -1,4 +1,4 @@
-lib = File.expand_path("../lib", __FILE__)
+lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
@@ -9,6 +9,6 @@ Gem::Specification.new do |gem|
 
   gem.summary       = "Root's Ruby/Rails Style Guide"
 
-  gem.add_development_dependency "rubocop", "0.49.0"
-  gem.add_development_dependency "rspec-rails", "~> 3.3"
+  gem.add_development_dependency "rspec-rails", "~> 3.8"
+  gem.add_development_dependency "rubocop", "0.58.2"
 end
