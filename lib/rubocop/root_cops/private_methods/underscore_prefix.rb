@@ -9,14 +9,15 @@ module RootCops
       PATTERN
 
       def on_class(node)
+        @visible = true
+
         _name, _base_class, body = *node
         return unless body
 
         body_nodes = body.type == :begin ? body.children : [body]
 
         body_nodes.each do |child_node|
-          _check_for_access_modifier(child_node) ||
-            _check_for_instance_method(child_node)
+          _check_for_access_modifier(child_node) || _check_for_instance_method(child_node)
         end
       end
 
@@ -25,10 +26,10 @@ module RootCops
       def _check_for_instance_method(node)
         return unless node.def_type?
         method_name, *_args = *node
-        if method_name =~ /^_/ && !@visibility
+        if method_name =~ /^_/ && @visible
           add_offense(node, :location => :expression, :message => NEED_PRIVATE)
         end
-        if method_name !~ /^_/ && @visibility
+        if method_name !~ /^_/ && !@visible
           add_offense(node, :location => :expression, :message => NEED_UNDERSCORE)
         end
       end
@@ -36,7 +37,7 @@ module RootCops
       def _check_for_access_modifier(node)
         return unless visibility_block?(node)
         _receiver, method_name = *node
-        @visibility = method_name
+        @visible = method_name == :public
       end
     end
   end
