@@ -1,7 +1,7 @@
 module RootCops
   class JobHasQueue < ::RuboCop::Cop::Cop
     MESSAGE = "Configure the job to run in a specific queue using queue_as or use a whitelisted mixin.".freeze
-    MIXIN_WHITELIST = %i[LookupQueueConcern NewBusinessQuoteCreationQueueConcern].freeze
+    MIXIN_WHITELIST = [:LookupQueueConcern, :NewBusinessQuoteCreationQueueConcern, :RatesQueueConcern].freeze
 
     def on_class(node)
       class_name = node.to_a[0].to_a[1]
