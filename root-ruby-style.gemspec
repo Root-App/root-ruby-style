@@ -9,5 +9,7 @@ Gem::Specification.new do |gem|
 
   gem.summary       = "Root's Ruby/Rails Style Guide"
 
-  gem.add_dependency "rubocop", "0.58.2"
+  gem.add_runtime_dependency "rubocop", "0.58.2"
+
+  gem.add_development_dependency "rspec", "~> 3.8"
 end
