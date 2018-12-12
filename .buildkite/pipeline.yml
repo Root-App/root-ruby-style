@@ -1,0 +1,17 @@
+---
+steps:
+  - name: ":rubocop:"
+    timeout_in_minutes: 5
+    command: bundle exec rubocop
+    plugins:
+      docker-compose#v2.5.1:
+        run: app
+        config: docker-compose.buildkite.yml
+
+  - name: ":rspec:"
+    timeout_in_minutes: 5
+    command: bundle exec rspec .
+    plugins:
+      docker-compose#v2.5.1:
+        run: app
+        config: docker-compose.buildkite.yml
