@@ -69,6 +69,43 @@ RSpec.describe RuboCop::Cop::RootCops::NoBackfillsInDataMigration do
     end
   end
 
+  context "when `execute` is called" do
+    it "adds an offense" do
+      expect_offense(<<~RUBY.strip_indent)
+        class AddSendNotificationsToClaimUser < ActiveRecord::Migration[5.1]
+          def up
+            safety_assured { execute("potentially harmful sql") }
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Backfills should happen outside of database migrations
+          end
+        end
+      RUBY
+    end
+
+    context "but it's in a non migration class" do
+      it "doesn't add an offense" do
+        expect_no_offenses(<<~RUBY.strip_indent)
+          class CollapsedMigrations
+            def up
+              safety_assured { execute("potentially harmful sql") }
+            end
+          end
+        RUBY
+      end
+    end
+
+    context "but it's in the `CollapsedMigration` class" do
+      it "doesn't add an offense" do
+        expect_no_offenses(<<~RUBY.strip_indent)
+          class CollapsedMigrations < ActiveRecord::Migration[5.1]
+            def up
+              safety_assured { execute("potentially harmful sql") }
+            end
+          end
+        RUBY
+      end
+    end
+  end
+
   context "when the class doesn't from ActiveRecord::Migration[\d.\d]" do
     it "doesn't add an offense" do
       expect_no_offenses(<<~RUBY)
