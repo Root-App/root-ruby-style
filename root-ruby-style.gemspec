@@ -11,5 +11,6 @@ Gem::Specification.new do |gem|
 
   gem.add_runtime_dependency "rubocop", "0.58.2"
 
+  gem.add_development_dependency "pry-byebug"
   gem.add_development_dependency "rspec", "~> 3.8"
 end
