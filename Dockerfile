@@ -1,9 +1,9 @@
 FROM ruby:2.5.1
 
-RUN mkdir /root-infrastructure
-WORKDIR /root-infrastructure
+RUN mkdir /root-ruby-style
+WORKDIR /root-ruby-style
 
-COPY Gemfile Gemfile.lock root-ruby-style.gemspec /root-infrastructure/
+COPY Gemfile Gemfile.lock root-ruby-style.gemspec /root-ruby-style/
 RUN bundle install
 
-COPY . /root-infrastructure
+COPY . /root-ruby-style
