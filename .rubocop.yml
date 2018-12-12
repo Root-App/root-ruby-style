@@ -1,22 +1,14 @@
 require:
-  - ./lib/rubocop/root_cops/job_has_queue.rb
-  - ./lib/rubocop/root_cops/private_methods/called_private_method.rb
-  - ./lib/rubocop/root_cops/private_methods/called_protected.rb
-  - ./lib/rubocop/root_cops/private_methods/underscore_prefix.rb
-  - ./lib/rubocop/root_cops/raise_i18n.rb
-  - ./lib/rubocop/root_cops/shared_context_name.rb
-  - ./lib/rubocop/root_cops/spec_file_name.rb
-  - ./lib/rubocop/root_cops/use_before_action.rb
-  - ./lib/rubocop/root_cops/use_detect.rb
-  - ./lib/rubocop/root_cops/use_envvars.rb
-  - ./lib/rubocop/root_cops/use_lonely_operator.rb
+  - ./lib/rubocop/cop/root_cops/private_methods/called_private_method.rb
+  - ./lib/rubocop/cop/root_cops/private_methods/called_protected.rb
+  - ./lib/rubocop/cop/root_cops/private_methods/underscore_prefix.rb
+  - ./lib/rubocop/cop/root_cops/shared_context_name.rb
+  - ./lib/rubocop/cop/root_cops/spec_file_name.rb
+  - ./lib/rubocop/cop/root_cops/use_detect.rb
+  - ./lib/rubocop/cop/root_cops/use_lonely_operator.rb
 
 AllCops:
-  TargetRubyVersion: 2.4
-  Exclude:
-    - "bin/**/*"
-    - "db/schema.rb"
-    - "node_modules/**/*"
+  TargetRubyVersion: 2.5
 
 Lint/Debugger:
   AutoCorrect: false
