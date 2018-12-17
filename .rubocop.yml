@@ -7,6 +7,7 @@ require:
   - ./lib/rubocop/cop/root_cops/raise_i18n.rb
   - ./lib/rubocop/cop/root_cops/shared_context_name.rb
   - ./lib/rubocop/cop/root_cops/spec_file_name.rb
+  - ./lib/rubocop/cop/root_cops/unnecessary_aggregate_failures.rb
   - ./lib/rubocop/cop/root_cops/use_before_action.rb
   - ./lib/rubocop/cop/root_cops/use_detect.rb
   - ./lib/rubocop/cop/root_cops/use_envvars.rb
@@ -113,4 +114,8 @@ Style/StringLiteralsInInterpolation:
 
 # disabling this so that %w() syntax isn't required in nested arrays which would have mixed syntax
 Style/WordArray:
+  Enabled: false
+
+# UnnecessaryAggregateFailures is off by default because it requires extra configuration within the project that uses it
+RootCop/UnnecessaryAggregateFailures:
   Enabled: false
