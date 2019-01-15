@@ -117,5 +117,5 @@ Style/WordArray:
   Enabled: false
 
 # UnnecessaryAggregateFailures is off by default because it requires extra configuration within the project that uses it
-RootCop/UnnecessaryAggregateFailures:
+RootCops/UnnecessaryAggregateFailures:
   Enabled: false
