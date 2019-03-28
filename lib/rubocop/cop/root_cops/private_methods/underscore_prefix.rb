@@ -16,6 +16,21 @@ module RuboCop
             _name, _base_class, body = *node
             return unless body
 
+            _check_body(body)
+          end
+
+          def on_module(node)
+            @visible = true
+
+            _name, body = *node
+            return unless body
+
+            _check_body(body)
+          end
+
+          private
+
+          def _check_body(body)
             body_nodes = body.type == :begin ? body.children : [body]
 
             body_nodes.each do |child_node|
@@ -23,11 +38,17 @@ module RuboCop
             end
           end
 
-          private
-
           def _check_for_instance_method(node)
-            return unless node.def_type?
-            method_name, *_args = *node
+            method_name = nil
+
+            if node.def_type?
+              method_name, *_args = *node
+            elsif node.defs_type?
+              _self, method_name, *_args = *node
+            end
+
+            return if method_name.nil?
+
             if method_name =~ /^_/ && @visible
               add_offense(node, :location => :expression, :message => NEED_PRIVATE)
             end
