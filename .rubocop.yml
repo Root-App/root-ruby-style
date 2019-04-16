@@ -12,7 +12,6 @@ require:
   - ./lib/rubocop/cop/root_cops/use_detect.rb
   - ./lib/rubocop/cop/root_cops/use_envvars.rb
   - ./lib/rubocop/cop/root_cops/use_lonely_operator.rb
-  - ./lib/rubocop/cop/root_cops/factory_file_name.rb
 
 AllCops:
   TargetRubyVersion: 2.5
@@ -120,7 +119,3 @@ Style/WordArray:
 # UnnecessaryAggregateFailures is off by default because it requires extra configuration within the project that uses it
 RootCops/UnnecessaryAggregateFailures:
   Enabled: false
-
-RootCops/FactoryFileName:
-  Include:
-    - '**/spec/factories/*.rb'
