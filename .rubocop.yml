@@ -71,6 +71,10 @@ Rails/HasAndBelongsToMany:
 Rails/FilePath:
   Enabled: false
 
+RSpec/NotToNot:
+  Enabled: true
+  EnforcedStyle: not_to
+
 Style/ConditionalAssignment:
   Enabled: false
 
