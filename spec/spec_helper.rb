@@ -1,5 +1,6 @@
 require "bundler"
 require "rubocop/rspec/support"
+require "rubocop/cop/root_cops/support/shared_examples"
 require_relative "../lib/rubocop/cop/root_cops"
 
 Bundler.require(:default, :development)
