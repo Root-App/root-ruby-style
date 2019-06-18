@@ -1,13 +1,14 @@
 require:
+  - ./lib/rubocop/cop/root_cops/eq_be_eql.rb
+  - ./lib/rubocop/cop/root_cops/factories/factory_file_name.rb
+  - ./lib/rubocop/cop/root_cops/factories/factory_name.rb
+  - ./lib/rubocop/cop/root_cops/job_has_queue.rb
+  - ./lib/rubocop/cop/root_cops/no_backfills_in_data_migration.rb
   - ./lib/rubocop/cop/root_cops/private_methods/called_private_method.rb
   - ./lib/rubocop/cop/root_cops/private_methods/called_protected.rb
   - ./lib/rubocop/cop/root_cops/private_methods/underscore_prefix.rb
-  - ./lib/rubocop/cop/root_cops/factories/factory_file_name.rb
-  - ./lib/rubocop/cop/root_cops/factories/factory_name.rb
-  - ./lib/rubocop/cop/root_cops/eq_be_eql.rb
-  - ./lib/rubocop/cop/root_cops/job_has_queue.rb
-  - ./lib/rubocop/cop/root_cops/no_backfills_in_data_migration.rb
   - ./lib/rubocop/cop/root_cops/raise_i18n.rb
+  - ./lib/rubocop/cop/root_cops/retry_on_warning.rb
   - ./lib/rubocop/cop/root_cops/shared_context_name.rb
   - ./lib/rubocop/cop/root_cops/spec_file_name.rb
   - ./lib/rubocop/cop/root_cops/unnecessary_aggregate_failures.rb
