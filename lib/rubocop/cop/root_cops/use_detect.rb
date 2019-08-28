@@ -17,6 +17,7 @@ module RuboCop
 
         def anything_other_than_class_constant?(node)
           return true unless node&.const_type?
+
           node.const_name == node.const_name.upcase
         end
 

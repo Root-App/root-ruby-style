@@ -1,4 +1,4 @@
-FROM ruby:2.5.1
+FROM ruby:2.5.5
 
 RUN mkdir /root-ruby-style
 WORKDIR /root-ruby-style

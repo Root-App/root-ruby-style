@@ -59,6 +59,7 @@ module RuboCop
 
           def _check_for_access_modifier(node)
             return unless visibility_block?(node)
+
             _receiver, method_name = *node
             @visible = method_name == :public
           end

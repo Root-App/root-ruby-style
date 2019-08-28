@@ -2,7 +2,7 @@ module RuboCop
   module Cop
     module RootCops
       class NoBackfillsInDataMigration < Cop
-        ACTIVE_RECORD_REGEX = /ActiveRecord::Migration\[\d\.\d\]/
+        ACTIVE_RECORD_REGEX = /ActiveRecord::Migration\[\d\.\d\]/.freeze
         COLLAPSED_MIGRATION_CLASSNAME = "CollapsedMigrations".freeze
         MESSAGE = "Backfills should happen outside of database migrations".freeze
         ACTIVE_RECORD_PERSISTENCE_METHODS = %i[
@@ -38,8 +38,10 @@ module RuboCop
 
         def on_send(node)
           return unless @is_migration_class
+
           _receiver, method_name = *node
           return if @is_collapsed_migration_class && method_name.to_s == "execute"
+
           if FORBIDDEN_METHODS.include?(method_name)
             add_offense(node, :location => :expression, :message => MESSAGE)
           end
