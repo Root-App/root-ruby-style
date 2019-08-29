@@ -6,7 +6,7 @@ module RuboCop
 
         def investigate(processed_source)
           file_path = processed_source.buffer.name
-          return unless file_path =~ /shared_contexts/
+          return unless /shared_contexts/.match?(file_path)
 
           file_paths = File.expand_path(file_path).chomp(".rb").split("/")
           relevant_paths = file_paths[(file_paths.index("shared_contexts") + 1)..-1]

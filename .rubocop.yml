@@ -1,4 +1,7 @@
 require:
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-rspec
   - ./lib/rubocop/cop/root_cops/eq_be_eql.rb
   - ./lib/rubocop/cop/root_cops/factories/factory_file_name.rb
   - ./lib/rubocop/cop/root_cops/factories/factory_name.rb
@@ -19,7 +22,10 @@ require:
   - ./lib/rubocop/cop/root_cops/envvar_assignment.rb
 
 AllCops:
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 2.5.5
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
 
 Lint/Debugger:
   AutoCorrect: false
@@ -62,6 +68,9 @@ Metrics/PerceivedComplexity:
 Naming/PredicateName:
   Enabled: false
 
+Naming/RescuedExceptionsVariableName:
+  Enabled: false
+
 Performance/Casecmp:
   Enabled: false
 
@@ -75,9 +84,30 @@ Rails/HasAndBelongsToMany:
 Rails/FilePath:
   Enabled: false
 
+RSpec:
+  Enabled: true
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/LeakyConstantDeclaration:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
 RSpec/NotToNot:
   Enabled: true
   EnforcedStyle: not_to
+
+RSpec/NestedGroups:
+  Enabled: false
 
 Style/ConditionalAssignment:
   Enabled: false
@@ -92,6 +122,9 @@ Style/DoubleNegation:
 
 # not going to force using guard clauses
 Style/GuardClause:
+  Enabled: false
+
+Style/FloatDivision:
   Enabled: false
 
 # continue to use string#freeze instead

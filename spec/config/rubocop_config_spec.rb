@@ -10,6 +10,7 @@ RSpec.describe ".rubocop.yml" do
     cops_location = File.expand_path("../../lib/rubocop/cop/root_cops", File.dirname(__FILE__))
     Dir.glob("#{cops_location}/**/*") do |cop_file|
       next unless File.file?(cop_file)
+
       cop_file_required = required_libs.any? { |lib| cop_file.end_with?(lib) }
       expect(cop_file_required).to be(true), "Expected #{cop_file} to be included in project's .rubocop.yml config"
     end
