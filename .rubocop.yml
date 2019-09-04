@@ -2,6 +2,7 @@ require:
   - rubocop-rails
   - rubocop-performance
   - rubocop-rspec
+  - ./lib/rubocop/cop/root_cops/avoid_ruby_prof.rb
   - ./lib/rubocop/cop/root_cops/eq_be_eql.rb
   - ./lib/rubocop/cop/root_cops/factories/factory_file_name.rb
   - ./lib/rubocop/cop/root_cops/factories/factory_name.rb
