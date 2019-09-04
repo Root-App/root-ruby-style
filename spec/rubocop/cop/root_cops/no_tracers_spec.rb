@@ -2,7 +2,8 @@ require_relative "../../../spec_helper.rb"
 
 describe RootCops::NoTracers do
   OFFENDING_FORMS = [
-    "Tracer.trace_method".freeze
+    "Tracer.trace_method".freeze,
+    "Tracer.any_method".freeze
   ].freeze
 
   subject(:cop) { described_class.new }
