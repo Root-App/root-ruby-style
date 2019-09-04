@@ -1,6 +1,6 @@
 require_relative "../../../spec_helper.rb"
 
-describe RootCops:: EqBeEql do
+describe RootCops::EqBeEql do
   OFFENDING_FORMS = [
     "expect(foo(bar)).to be(true)",
     "expect(foo(bar)).to be(false)",
