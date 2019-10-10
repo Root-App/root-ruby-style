@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
 
   gem.summary       = "Root's Ruby/Rails Style Guide"
 
-  gem.add_runtime_dependency "activesupport", "~> 5.0"
+  gem.add_runtime_dependency "activesupport", ">= 5.0"
   gem.add_runtime_dependency "rubocop", "~> 0.74.0"
   gem.add_runtime_dependency "rubocop-performance", "1.4.1"
   gem.add_runtime_dependency "rubocop-rails", "~> 2.3.1"
