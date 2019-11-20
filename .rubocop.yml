@@ -24,7 +24,7 @@ require:
   - ./lib/rubocop/cop/root_cops/envvar_assignment.rb
 
 AllCops:
-  TargetRubyVersion: 2.5.5
+  TargetRubyVersion: 2.6.5
 
 Layout/EmptyLineAfterGuardClause:
   Enabled: false
