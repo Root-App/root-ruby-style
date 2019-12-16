@@ -3,6 +3,7 @@ require:
   - rubocop-performance
   - rubocop-rspec
   - ./lib/rubocop/cop/root_cops/avoid_ruby_prof.rb
+  - ./lib/rubocop/cop/root_cops/dont_mix_keyword_and_positional_args.rb
   - ./lib/rubocop/cop/root_cops/eq_be_eql.rb
   - ./lib/rubocop/cop/root_cops/factories/factory_file_name.rb
   - ./lib/rubocop/cop/root_cops/factories/factory_name.rb
@@ -163,6 +164,11 @@ Style/WordArray:
 # UnnecessaryAggregateFailures is off by default because it requires extra configuration within the project that uses it
 RootCops/UnnecessaryAggregateFailures:
   Enabled: false
+
+# UnmixedKeywordAndPositionalArgs is off by default until it all offenses are fixed
+RootCops/UnmixedKeywordAndPositionalArgs:
+  Enabled: false
+
 
 Factories/FactoryFileName:
   Include:

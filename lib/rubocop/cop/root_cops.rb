@@ -1,6 +1,7 @@
 require "rubocop"
 
 require_relative "root_cops/avoid_ruby_prof"
+require_relative "root_cops/dont_mix_keyword_and_positional_args"
 require_relative "root_cops/eq_be_eql"
 require_relative "root_cops/factories/factory_file_name"
 require_relative "root_cops/factories/factory_name"
