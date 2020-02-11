@@ -4,7 +4,7 @@ module RuboCop
       class JobHasQueue < Cop
         MESSAGE = "Configure the job to run in a specific queue using queue_as, sharded_queue_as or a whitelisted mixin.".freeze
         MIXIN_WHITELIST = %i[LookupQueueConcern NewBusinessQuoteCreationQueueConcern RatesQueueConcern].freeze
-        QUEUEING_OPTIONS = [:queue_as, :sharded_queue_as].freeze
+        QUEUEING_OPTIONS = %i[queue_as sharded_queue_as].freeze
 
         def on_class(node)
           class_name = node.to_a[0].to_a[1]
