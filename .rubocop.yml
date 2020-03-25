@@ -20,10 +20,10 @@ require:
   - ./lib/rubocop/cop/root_cops/spec_file_name.rb
   - ./lib/rubocop/cop/root_cops/unnecessary_aggregate_failures.rb
   - ./lib/rubocop/cop/root_cops/use_before_action.rb
-  - ./lib/rubocop/cop/root_cops/use_change.rb
   - ./lib/rubocop/cop/root_cops/use_detect.rb
   - ./lib/rubocop/cop/root_cops/use_envvars.rb
   - ./lib/rubocop/cop/root_cops/use_lonely_operator.rb
+  - ./lib/rubocop/cop/root_cops/up_and_down_or_change.rb
   - ./lib/rubocop/cop/root_cops/envvar_assignment.rb
 
 AllCops:
