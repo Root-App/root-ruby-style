@@ -20,6 +20,7 @@ require:
   - ./lib/rubocop/cop/root_cops/spec_file_name.rb
   - ./lib/rubocop/cop/root_cops/unnecessary_aggregate_failures.rb
   - ./lib/rubocop/cop/root_cops/use_before_action.rb
+  - ./lib/rubocop/cop/root_cops/use_change.rb
   - ./lib/rubocop/cop/root_cops/use_detect.rb
   - ./lib/rubocop/cop/root_cops/use_envvars.rb
   - ./lib/rubocop/cop/root_cops/use_lonely_operator.rb
@@ -170,6 +171,10 @@ RootCops/UnnecessaryAggregateFailures:
 # including project must configure the proper Mapping (see MustInherit class for config details)
 RootCops/MustInherit:
   Enabled: false
+
+RootCops/UseChange:
+  Include:
+    - db/migrate/*.rb
 
 Factories/FactoryFileName:
   Include:
