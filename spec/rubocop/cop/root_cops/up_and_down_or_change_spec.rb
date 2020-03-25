@@ -42,4 +42,14 @@ RSpec.describe RuboCop::Cop::RootCops::UpAndDownOrChange do
       RUBY
     end
   end
+
+  context "when the node doesn't inherit from ActiveRecord" do
+    it "doesn't report an offense" do
+      expect_no_offenses(<<~RUBY.strip_indent)
+        class CreatePosts
+          def some_method; end
+        end
+      RUBY
+    end
+  end
 end
