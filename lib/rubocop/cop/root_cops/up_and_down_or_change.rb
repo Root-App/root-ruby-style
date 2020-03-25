@@ -16,7 +16,7 @@ module RuboCop
         end
 
         def_node_matcher :active_record_migration?, <<~PATTERN
-          {(class (const nil _) (send (const (const nil :ActiveRecord) :Migration) :[] (float _)))}
+          {(send (const (const nil? :ActiveRecord) :Migration) :[] (:float _))}
         PATTERN
       end
     end
