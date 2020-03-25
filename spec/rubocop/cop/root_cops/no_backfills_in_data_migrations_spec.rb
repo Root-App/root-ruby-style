@@ -28,7 +28,7 @@ RSpec.describe RuboCop::Cop::RootCops::NoBackfillsInDataMigration do
       arrow_string = "^" * (33 + method.length)
       error_message = "#{arrow_string} Backfills should happen outside of database migrations"
 
-      expect_offense(<<~RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         class AddSendNotificationsToClaimUser < ActiveRecord::Migration[5.1]
           def change
             add_column :claim_users, :send_notifications, :boolean
@@ -47,7 +47,7 @@ RSpec.describe RuboCop::Cop::RootCops::NoBackfillsInDataMigration do
       arrow_string = "^" * (33 + method.length)
       error_message = "#{arrow_string} Backfills should happen outside of database migrations"
 
-      expect_offense(<<~RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         class AddSendNotificationsToClaimUser < ActiveRecord::Migration[5.1]
           def change
             add_column :claim_users, :send_notifications, :boolean
@@ -69,7 +69,7 @@ RSpec.describe RuboCop::Cop::RootCops::NoBackfillsInDataMigration do
 
   context "when `execute` is called" do
     it "adds an offense" do
-      expect_offense(<<~RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         class AddSendNotificationsToClaimUser < ActiveRecord::Migration[5.1]
           def up
             safety_assured { execute("potentially harmful sql") }
@@ -81,7 +81,7 @@ RSpec.describe RuboCop::Cop::RootCops::NoBackfillsInDataMigration do
 
     context "but it's in a non migration class" do
       it "doesn't add an offense" do
-        expect_no_offenses(<<~RUBY.strip_indent)
+        expect_no_offenses(<<~RUBY)
           class CollapsedMigrations
             def up
               safety_assured { execute("potentially harmful sql") }
@@ -93,7 +93,7 @@ RSpec.describe RuboCop::Cop::RootCops::NoBackfillsInDataMigration do
 
     context "but it's in the `CollapsedMigration` class" do
       it "doesn't add an offense" do
-        expect_no_offenses(<<~RUBY.strip_indent)
+        expect_no_offenses(<<~RUBY)
           class CollapsedMigrations < ActiveRecord::Migration[5.1]
             def up
               safety_assured { execute("potentially harmful sql") }

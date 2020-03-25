@@ -5,7 +5,7 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::UnderscorePrefix do
     context "when writing a method above the private modifier" do
       context "when using an underscore prefix" do
         it "reports an offense" do
-          expect_offense(<<~RUBY.strip_indent)
+          expect_offense(<<~RUBY)
             #{module_or_class} FooService
               def self._method
               ^^^^^^^^^^^^^^^^ Include a private declaration above the private methods.
@@ -25,7 +25,7 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::UnderscorePrefix do
 
       context "when not using an underscore prefix" do
         it "does not report an offense" do
-          expect_no_offenses(<<~RUBY.strip_indent)
+          expect_no_offenses(<<~RUBY)
             #{module_or_class} FooService
               def self.method
                 nil
@@ -45,7 +45,7 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::UnderscorePrefix do
     context "when writing a method below the private modifier" do
       context "when not using an underscore prefix" do
         it "reports an offense" do
-          expect_offense(<<~RUBY.strip_indent)
+          expect_offense(<<~RUBY)
             #{module_or_class} FooService
               private
 
@@ -65,7 +65,7 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::UnderscorePrefix do
 
       context "when using an underscore prefix" do
         it "does not report an offense" do
-          expect_no_offenses(<<~RUBY.strip_indent)
+          expect_no_offenses(<<~RUBY)
             #{module_or_class} FooService
               private
 
@@ -86,7 +86,7 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::UnderscorePrefix do
       context "when writing a method above the private modifier" do
         context "when using an underscore prefix" do
           it "reports an offense" do
-            expect_offense(<<~RUBY.strip_indent)
+            expect_offense(<<~RUBY)
               #{module_or_class} FooService
                 private
 
@@ -110,7 +110,7 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::UnderscorePrefix do
 
         context "when not using an underscore prefix" do
           it "does not report an offense" do
-            expect_no_offenses(<<~RUBY.strip_indent)
+            expect_no_offenses(<<~RUBY)
               #{module_or_class} FooService
                 private
 
@@ -132,7 +132,7 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::UnderscorePrefix do
       context "when writing a method below the private modifier" do
         context "when not using an underscore prefix" do
           it "reports an offense" do
-            expect_offense(<<~RUBY.strip_indent)
+            expect_offense(<<~RUBY)
               #{module_or_class} FooService
                 private
 
@@ -156,7 +156,7 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::UnderscorePrefix do
 
         context "when using an underscore prefix" do
           it "does not report an offense" do
-            expect_no_offenses(<<~RUBY.strip_indent)
+            expect_no_offenses(<<~RUBY)
               #{module_or_class} FooService
                 private
 

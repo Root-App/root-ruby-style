@@ -3,7 +3,7 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::CalledPrivateMethod do
 
   context "when a public class method without arguments is called" do
     it "does not report an offense" do
-      expect_no_offenses(<<~RUBY.strip_indent)
+      expect_no_offenses(<<~RUBY)
         def some_method
           SomeClass.a_public_method
         end
@@ -13,7 +13,7 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::CalledPrivateMethod do
 
   context "when a public class method with arguments is called" do
     it "does not report an offense" do
-      expect_no_offenses(<<~RUBY.strip_indent)
+      expect_no_offenses(<<~RUBY)
         def some_method
           SomeClass.a_public_method(:argument => 1)
         end
@@ -23,7 +23,7 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::CalledPrivateMethod do
 
   context "when a 'private' class method without arguments is called" do
     it "reports an offense" do
-      expect_offense(<<~RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         def some_method
           SomeClass._a_private_method
                     ^^^^^^^^^^^^^^^^^ Do not call private class methods from outside the class. Make the method public if necessary.
@@ -34,7 +34,7 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::CalledPrivateMethod do
 
   context "when a 'private' class method with arguments is called" do
     it "reports an offense" do
-      expect_offense(<<~RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         def some_method
           SomeClass._a_private_method(:argument => 1)
                     ^^^^^^^^^^^^^^^^^ Do not call private class methods from outside the class. Make the method public if necessary.

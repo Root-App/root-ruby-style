@@ -5,7 +5,7 @@ RSpec.describe RuboCop::Cop::RootCops::UpAndDownOrChange do
 
   context "when the migration does not have #change or #up/#down" do
     it "reports an offense" do
-      expect_offense(<<~RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         class CreatePosts < ActiveRecord::Migration[6.0]
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{described_class::MSG}
         end
@@ -15,7 +15,7 @@ RSpec.describe RuboCop::Cop::RootCops::UpAndDownOrChange do
 
   context "when the migration has #change" do
     it "does not report an offense" do
-      expect_no_offenses(<<~RUBY.strip_indent)
+      expect_no_offenses(<<~RUBY)
         class CreatePosts < ActiveRecord::Migration[6.0]
           def change
             create_table :posts do |t|
@@ -28,7 +28,7 @@ RSpec.describe RuboCop::Cop::RootCops::UpAndDownOrChange do
 
   context "when the migration has a #up/#down" do
     it "does not report an offense" do
-      expect_no_offenses(<<~RUBY.strip_indent)
+      expect_no_offenses(<<~RUBY)
         class CreatePosts < ActiveRecord::Migration[6.0]
           def up
             create_table :posts do |t|
@@ -45,7 +45,7 @@ RSpec.describe RuboCop::Cop::RootCops::UpAndDownOrChange do
 
   context "when the node doesn't inherit from ActiveRecord" do
     it "doesn't report an offense" do
-      expect_no_offenses(<<~RUBY.strip_indent)
+      expect_no_offenses(<<~RUBY)
         class CreatePosts
           def some_method; end
         end

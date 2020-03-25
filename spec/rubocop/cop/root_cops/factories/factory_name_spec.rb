@@ -7,7 +7,7 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryName do
     end
 
     it "skips all factory name checks and registers no offenses" do
-      expect_no_offenses(<<-RUBY.strip_indent)
+      expect_no_offenses(<<-RUBY)
         FactoryBot.define do
           factory :user_billing do
             ref { "new-branch" }
@@ -51,7 +51,7 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryName do
 
       context "and the factory name equals the file name" do
         it "does not register an offense" do
-          expect_no_offenses(<<-RUBY.strip_indent)
+          expect_no_offenses(<<-RUBY)
             FactoryBot.define do
               factory :user_billings do
                 ref { "new-branch" }
@@ -65,7 +65,7 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryName do
 
       context "and the factory name equals the singular version of the file name." do
         it "does not register an offense" do
-          expect_no_offenses(<<-RUBY.strip_indent)
+          expect_no_offenses(<<-RUBY)
             FactoryBot.define do
               factory :user_billing do
                 ref { "new-branch" }
@@ -79,7 +79,7 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryName do
 
       context "and the factory name does not equal the file name or the singular version of the file name" do
         it "registers an offense" do
-          expect_offense(<<-RUBY.strip_indent)
+          expect_offense(<<-RUBY)
             FactoryBot.define do
               factory :payment do
               ^^^^^^^^^^^^^^^^ Factory should be in own file or be named the singular form of the file name. OR group closely related factories in the same file and prefix their names with 'user_billings__'.
@@ -106,7 +106,7 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryName do
 
       context "and the factory uses the file name as a prefix" do
         it "does not register an offense" do
-          expect_no_offenses(<<-RUBY.strip_indent)
+          expect_no_offenses(<<-RUBY)
             FactoryBot.define do
               factory :user_billings__payment do
                 ref { "new-branch" }
@@ -120,7 +120,7 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryName do
 
       context "and the factory name uses an incorrect prefix" do
         it "registers an offense" do
-          expect_offense(<<-RUBY.strip_indent)
+          expect_offense(<<-RUBY)
             FactoryBot.define do
               factory :user_billing__payment do
               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Factory name uses incorrect prefix, should be 'user_billings__payment'.
@@ -147,7 +147,7 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryName do
 
       context "and there are multiple offenses" do
         it "registers all the offenses" do
-          expect_offense(<<-RUBY.strip_indent)
+          expect_offense(<<-RUBY)
             FactoryBot.define do
               factory :user_billing do
                 ref { "new-branch" }
@@ -193,7 +193,7 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryName do
 
       context "and the factory name equals the file name" do
         it "does not register an offense" do
-          expect_no_offenses(<<-RUBY.strip_indent)
+          expect_no_offenses(<<-RUBY)
             FactoryBot.define do
               factory :billing_fish do
                 ref { "new-branch" }
@@ -207,7 +207,7 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryName do
 
       context "and the factory name does not equal the the file name" do
         it "registers an offense" do
-          expect_offense(<<-RUBY.strip_indent)
+          expect_offense(<<-RUBY)
             FactoryBot.define do
               factory :payment do
               ^^^^^^^^^^^^^^^^ Factory should be in own file or be named the singular form of the file name. OR group closely related factories in the same file and prefix their names with 'billing_fish__'.
@@ -228,7 +228,7 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryName do
 
       context "and the factory uses the file name as a prefix" do
         it "does not register an offense" do
-          expect_no_offenses(<<-RUBY.strip_indent)
+          expect_no_offenses(<<-RUBY)
             FactoryBot.define do
               factory :billing_fish__payment do
                 ref { "new-branch" }
@@ -242,7 +242,7 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryName do
 
       context "and the factory name uses an incorrect prefix" do
         it "registers an offense" do
-          expect_offense(<<-RUBY.strip_indent)
+          expect_offense(<<-RUBY)
             FactoryBot.define do
               factory :billing__payment do
               ^^^^^^^^^^^^^^^^^^^^^^^^^ Factory name uses incorrect prefix, should be 'billing_fish__payment'.
@@ -263,7 +263,7 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryName do
 
       context "and there are multiple offenses" do
         it "registers all the offenses" do
-          expect_offense(<<-RUBY.strip_indent)
+          expect_offense(<<-RUBY)
             FactoryBot.define do
               factory :billing_fish do
                 ref { "new-branch" }

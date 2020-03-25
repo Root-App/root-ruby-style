@@ -1,6 +1,6 @@
 RSpec.shared_examples_for "registers an offense" do |offending_form, error_message|
   it "when using '#{offending_form}'" do
-    inspect_source(<<-RUBY.strip_indent)
+    inspect_source(<<-RUBY)
       #{offending_form}
     RUBY
     expect(cop.offenses.size).to eq(1)
@@ -12,7 +12,7 @@ end
 
 RSpec.shared_examples_for "does not register an offense" do |valid_form|
   it "when using #{valid_form}" do
-    expect_no_offenses(<<~RUBY.strip_indent)
+    expect_no_offenses(<<~RUBY)
       #{valid_form}
     RUBY
   end

@@ -10,10 +10,10 @@ Gem::Specification.new do |gem|
   gem.summary       = "Root's Ruby/Rails Style Guide"
 
   gem.add_runtime_dependency "activesupport", ">= 5.0", "< 7.x"
-  gem.add_runtime_dependency "rubocop", "~> 0.74.0"
-  gem.add_runtime_dependency "rubocop-performance", "1.4.1"
-  gem.add_runtime_dependency "rubocop-rails", "~> 2.3.1"
-  gem.add_runtime_dependency "rubocop-rspec", "~> 1.35.0"
+  gem.add_runtime_dependency "rubocop", "~> 0.80.1"
+  gem.add_runtime_dependency "rubocop-performance", "1.5.2"
+  gem.add_runtime_dependency "rubocop-rails", "~> 2.5.0"
+  gem.add_runtime_dependency "rubocop-rspec", "~> 1.38.1"
 
   gem.add_development_dependency "pry-byebug"
   gem.add_development_dependency "rspec", "~> 3.8"

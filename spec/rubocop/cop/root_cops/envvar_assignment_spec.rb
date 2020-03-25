@@ -4,53 +4,53 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
   context "when the file is not an initializer" do
     context "for general assignment" do
       it "reports an offense for ENVVARS constant assignment" do
-        expect_offense(<<~RUBY.strip_indent)
+        expect_offense(<<~RUBY)
           CONSTANT = ENVVARS["VAR"]
           ^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
         RUBY
       end
 
       it "reports an offense for ENVVARS constant assignment wrapped in another method" do
-        expect_offense(<<~RUBY.strip_indent)
+        expect_offense(<<~RUBY)
           CONSTANT = JSON.parse(ENVVARS["VAR"])
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
         RUBY
       end
 
       it "does not report an offense for normal constant assignment" do
-        expect_no_offenses(<<~RUBY.strip_indent)
+        expect_no_offenses(<<~RUBY)
           CONSTANT = "string"
         RUBY
       end
 
       it "does not report an offense for normal ||= assignment" do
-        expect_no_offenses(<<~RUBY.strip_indent)
+        expect_no_offenses(<<~RUBY)
           CONSTANT ||= 72.0
         RUBY
       end
 
       it "reports an offense for ENVVARS ||= assignment" do
-        expect_offense(<<~RUBY.strip_indent)
+        expect_offense(<<~RUBY)
           CONSTANT ||= ENVVARS["VAR"]
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
         RUBY
       end
 
       it "reports an offense for ENVVARS ||= assignment wrapped in another method" do
-        expect_offense(<<~RUBY.strip_indent)
+        expect_offense(<<~RUBY)
           CONSTANT ||= JSON.parse(ENVVARS["VAR"])
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
         RUBY
       end
 
       it "does not report an offense for assignment to ENVVARS" do
-        expect_no_offenses(<<~RUBY.strip_indent)
+        expect_no_offenses(<<~RUBY)
           ENVVARS = {}
         RUBY
       end
 
       it "does not report an offense for ||= assignment to ENVVARS" do
-        expect_no_offenses(<<~RUBY.strip_indent)
+        expect_no_offenses(<<~RUBY)
           ENVVARS ||= {}
         RUBY
       end
@@ -58,7 +58,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
 
     context "when the assignment is within a class" do
       it "reports an offense for ENVVARS constant assignment" do
-        expect_offense(<<~RUBY.strip_indent)
+        expect_offense(<<~RUBY)
           class MyClass
             CONSTANT = ENVVARS["VAR"]
             ^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
@@ -67,7 +67,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
       end
 
       it "reports an offense for ENVVARS constant assignment wrapped in another method" do
-        expect_offense(<<~RUBY.strip_indent)
+        expect_offense(<<~RUBY)
           class MyClass
             CONSTANT = JSON.parse(ENVVARS["VAR"])
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
@@ -76,7 +76,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
       end
 
       it "does not report an offense for normal constant assignment" do
-        expect_no_offenses(<<~RUBY.strip_indent)
+        expect_no_offenses(<<~RUBY)
           class MyClass
             CONSTANT = "string"
           end
@@ -84,7 +84,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
       end
 
       it "does not report an offense for normal ||= assignment" do
-        expect_no_offenses(<<~RUBY.strip_indent)
+        expect_no_offenses(<<~RUBY)
           class MyClass
             CONSTANT ||= 72.0
           end
@@ -92,7 +92,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
       end
 
       it "reports an offense for ENVVARS ||= assignment" do
-        expect_offense(<<~RUBY.strip_indent)
+        expect_offense(<<~RUBY)
           class MyClass
             CONSTANT ||= ENVVARS["VAR"]
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
@@ -101,7 +101,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
       end
 
       it "reports an offense for ENVVARS ||= assignment wrapped in another method" do
-        expect_offense(<<~RUBY.strip_indent)
+        expect_offense(<<~RUBY)
           class MyClass
             CONSTANT ||= JSON.parse(ENVVARS["VAR"])
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
@@ -110,7 +110,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
       end
 
       it "does not report an offense for assignment to ENVVARS" do
-        expect_no_offenses(<<~RUBY.strip_indent)
+        expect_no_offenses(<<~RUBY)
           class MyClass
             ENVVARS = {}
           end
@@ -118,7 +118,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
       end
 
       it "does not report an offense for ||= assignment to ENVVARS" do
-        expect_no_offenses(<<~RUBY.strip_indent)
+        expect_no_offenses(<<~RUBY)
           class MyClass
             ENVVARS ||= {}
           end
@@ -128,7 +128,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
 
     context "when the assignment is within a module" do
       it "reports an offense for ENVVARS constant assignment" do
-        expect_offense(<<~RUBY.strip_indent)
+        expect_offense(<<~RUBY)
           module MyModule
             CONSTANT = ENVVARS["VAR"]
             ^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
@@ -137,7 +137,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
       end
 
       it "reports an offense for ENVVARS constant assignment wrapped in another method" do
-        expect_offense(<<~RUBY.strip_indent)
+        expect_offense(<<~RUBY)
           module MyModule
             CONSTANT = JSON.parse(ENVVARS["VAR"])
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
@@ -146,7 +146,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
       end
 
       it "does not report an offense for normal constant assignment" do
-        expect_no_offenses(<<~RUBY.strip_indent)
+        expect_no_offenses(<<~RUBY)
           module MyModule
             CONSTANT = "string"
           end
@@ -154,7 +154,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
       end
 
       it "does not report an offense for normal ||= assignment" do
-        expect_no_offenses(<<~RUBY.strip_indent)
+        expect_no_offenses(<<~RUBY)
           module MyModule
             CONSTANT ||= 72.0
           end
@@ -162,7 +162,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
       end
 
       it "reports an offense for ENVVARS ||= assignment" do
-        expect_offense(<<~RUBY.strip_indent)
+        expect_offense(<<~RUBY)
           module MyModule
             CONSTANT ||= ENVVARS["VAR"]
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
@@ -171,7 +171,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
       end
 
       it "reports an offense for ENVVARS ||= assignment wrapped in another method" do
-        expect_offense(<<~RUBY.strip_indent)
+        expect_offense(<<~RUBY)
           module MyModule
             CONSTANT ||= JSON.parse(ENVVARS["VAR"])
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
@@ -180,7 +180,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
       end
 
       it "does not report an offense for assignment to ENVVARS" do
-        expect_no_offenses(<<~RUBY.strip_indent)
+        expect_no_offenses(<<~RUBY)
           module MyModule
             ENVVARS = {}
           end
@@ -188,7 +188,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
       end
 
       it "does not report an offense for ||= assignment to ENVVARS" do
-        expect_no_offenses(<<~RUBY.strip_indent)
+        expect_no_offenses(<<~RUBY)
           module MyModule
             ENVVARS ||= {}
           end
@@ -208,7 +208,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
 
     context "ENVVARS constant assignment" do
       let(:source) do
-        <<~RUBY.strip_indent
+        <<~RUBY
           CONSTANT = ENVVARS["VAR"]
         RUBY
       end
@@ -220,7 +220,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
 
     context "ENVVARS constant ||= assignment" do
       let(:source) do
-        <<~RUBY.strip_indent
+        <<~RUBY
           CONSTANT ||= ENVVARS["VAR"]
         RUBY
       end

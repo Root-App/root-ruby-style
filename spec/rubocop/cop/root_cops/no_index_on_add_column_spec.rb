@@ -3,7 +3,7 @@ RSpec.describe RuboCop::Cop::RootCops::NoIndexOnAddColumn do
 
   it "adds an offense when add_column is called with :index option" do
     error_message = "#{'^' * 70} Do not use :index option on add_column"
-    expect_offense(<<~RUBY.strip_indent)
+    expect_offense(<<~RUBY)
       class AddSendNotificationsToClaimUser < ActiveRecord::Migration[5.1]
         def change
           add_column :claim_users, :send_notifications, :boolean, :index => true
@@ -15,7 +15,7 @@ RSpec.describe RuboCop::Cop::RootCops::NoIndexOnAddColumn do
 
   it "adds an offense when add_column is called with :index and other options" do
     error_message = "#{'^' * 89} Do not use :index option on add_column"
-    expect_offense(<<~RUBY.strip_indent)
+    expect_offense(<<~RUBY)
       class AddSendNotificationsToClaimUser < ActiveRecord::Migration[5.1]
         def change
           add_column :claim_users, :send_notifications, :boolean, :default => false, :index => true
@@ -37,7 +37,7 @@ RSpec.describe RuboCop::Cop::RootCops::NoIndexOnAddColumn do
 
   it "adds an offense when add_column is called with :index within a private method inside a migration" do
     error_message = "#{'^' * 70} Do not use :index option on add_column"
-    expect_offense(<<~RUBY.strip_indent)
+    expect_offense(<<~RUBY)
       class AddSendNotificationsToClaimUser < ActiveRecord::Migration[5.1]
         def change
           _secretly_try_and_add_an_indexed_column
