@@ -1,5 +1,3 @@
-require_relative "../../../../spec_helper.rb"
-
 RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryFileName do
   subject(:cop) { described_class.new }
 

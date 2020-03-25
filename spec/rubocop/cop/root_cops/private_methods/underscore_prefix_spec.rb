@@ -1,7 +1,3 @@
-require_relative "../../../../spec_helper.rb"
-
-require "pry"
-
 RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::UnderscorePrefix do
   subject(:cop) { described_class.new }
 

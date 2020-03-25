@@ -1,5 +1,3 @@
-require_relative "../../spec_helper.rb"
-
 RSpec.describe Helpers::Factories do
   describe ".file_name_has_error?" do
     context "when the file name is not pluralized" do

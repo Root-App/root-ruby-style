@@ -1,4 +1,3 @@
-require_relative "../spec_helper.rb"
 require "yaml"
 
 RSpec.describe ".rubocop.yml" do
