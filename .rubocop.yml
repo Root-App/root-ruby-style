@@ -172,10 +172,6 @@ RootCops/UnnecessaryAggregateFailures:
 RootCops/MustInherit:
   Enabled: false
 
-RootCops/UseChange:
-  Include:
-    - db/migrate/*.rb
-
 Factories/FactoryFileName:
   Include:
     - '**/spec/factories/*.rb'

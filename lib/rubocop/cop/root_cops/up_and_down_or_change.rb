@@ -5,6 +5,8 @@ module RuboCop
         MSG = "Migration must have either #change or #up/#down".freeze
 
         def on_class(node)
+          return unless active_record_migration?(node)
+
           methods = node.each_descendant(:def).map { |n| n.children[0] }
 
           return if methods.include?(:change)
@@ -12,6 +14,10 @@ module RuboCop
 
           add_offense(node, :location => :expression, :message => MSG)
         end
+
+        def_node_matcher :active_record_migration?, <<~PATTERN
+          {(class (const nil _) (send (const (const nil :ActiveRecord) :Migration) :[] (float _)))}
+        PATTERN
       end
     end
   end
