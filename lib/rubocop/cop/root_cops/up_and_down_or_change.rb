@@ -9,7 +9,6 @@ module RuboCop
 
           methods = node.each_descendant(:def).map { |n| n.children[0] }
 
-
           return if methods.include?(:change)
           return if methods.include?(:up) && methods.include?(:down)
 
