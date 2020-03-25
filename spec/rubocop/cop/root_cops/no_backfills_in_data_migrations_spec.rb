@@ -1,5 +1,3 @@
-require_relative "../../../spec_helper.rb"
-
 active_record_persistence_methods = %w[
   decrement
   decrement!
