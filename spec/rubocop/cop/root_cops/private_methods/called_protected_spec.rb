@@ -3,7 +3,7 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::CalledProtected do
 
   context "when the public modifier is used" do
     it "does not report an offense" do
-      expect_no_offenses(<<~RUBY.strip_indent)
+      expect_no_offenses(<<~RUBY)
         module FooService
           public
 
@@ -17,7 +17,7 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::CalledProtected do
 
   context "when the private modifier is used" do
     it "does not report an offense" do
-      expect_no_offenses(<<~RUBY.strip_indent)
+      expect_no_offenses(<<~RUBY)
         module FooService
           def self.method
             _method
@@ -35,7 +35,7 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::CalledProtected do
 
   context "when the protected modifier is used" do
     it "reports an offense" do
-      expect_offense(<<~RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         module FooService
           def self.method
             _method

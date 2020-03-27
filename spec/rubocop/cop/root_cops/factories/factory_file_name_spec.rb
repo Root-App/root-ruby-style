@@ -8,7 +8,7 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryFileName do
       end
 
       it "does not register an offense" do
-        expect_no_offenses(<<-RUBY.strip_indent)
+        expect_no_offenses(<<-RUBY)
           FactoryBot.define do
           end
         RUBY
@@ -21,7 +21,7 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryFileName do
       end
 
       it "does not register an offense" do
-        expect_no_offenses(<<-RUBY.strip_indent)
+        expect_no_offenses(<<-RUBY)
           FactoryBot.define do
           end
         RUBY
@@ -34,7 +34,7 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryFileName do
       end
 
       it "registers an offense" do
-        expect_offense(<<-RUBY.strip_indent)
+        expect_offense(<<-RUBY)
           FactoryBot.define do
           ^^^^^^^^^^^^^^^^^ Factory file name should be plural (user_billings).
           end
@@ -50,7 +50,7 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryFileName do
       end
 
       it "does not register an offense" do
-        expect_no_offenses(<<-RUBY.strip_indent)
+        expect_no_offenses(<<-RUBY)
           FactoryBot.define do
           end
         RUBY
@@ -63,7 +63,7 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryFileName do
       end
 
       it "does not register an offense" do
-        expect_no_offenses(<<-RUBY.strip_indent)
+        expect_no_offenses(<<-RUBY)
           FactoryBot.define do
           end
         RUBY
@@ -76,7 +76,7 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryFileName do
       end
 
       it "registers an offense" do
-        expect_offense(<<-RUBY.strip_indent)
+        expect_offense(<<-RUBY)
           FactoryBot.define do
           ^^^^^^^^^^^^^^^^^ Factory file name should be plural (billings).
           end

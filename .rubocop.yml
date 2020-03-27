@@ -32,6 +32,9 @@ AllCops:
 Layout/EmptyLineAfterGuardClause:
   Enabled: false
 
+Layout/LineLength:
+  Enabled: false
+
 Lint/Debugger:
   AutoCorrect: false
 
@@ -51,9 +54,6 @@ Metrics/ClassLength:
   Enabled: false
 
 Metrics/CyclomaticComplexity:
-  Enabled: false
-
-Metrics/LineLength:
   Enabled: false
 
 Metrics/MethodLength:
@@ -139,6 +139,15 @@ Style/FrozenStringLiteralComment:
 # use 1.8 style hashes
 Style/HashSyntax:
   EnforcedStyle: hash_rockets
+
+Style/HashEachMethods:
+  Enabled: false
+
+Style/HashTransformKeys:
+  Enabled: false
+
+Style/HashTransformValues:
+  Enabled: false
 
 # not requiring guard clauses for single-line bodies
 Style/IfUnlessModifier:

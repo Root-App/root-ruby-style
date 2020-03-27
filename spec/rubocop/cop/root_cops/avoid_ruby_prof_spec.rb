@@ -9,7 +9,7 @@ RSpec.describe RuboCop::Cop::RootCops::AvoidRubyProf do
 
   context "when ruby_prof is the only metadata used in a `describe` block's definition" do
     it "reports an offense" do
-      expect_offense(<<~RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         describe "a class", :ruby_prof do
                             ^^^^^^^^^^ :ruby_prof is for local use only and should not be committed.
           let(:foo) { "bar" }
@@ -26,7 +26,7 @@ RSpec.describe RuboCop::Cop::RootCops::AvoidRubyProf do
 
   context "when ruby_prof is the only metadata used in a `context` block's definition" do
     it "reports an offense" do
-      expect_offense(<<~RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         describe "a class" do
           let(:foo) { "bar" }
 
@@ -43,7 +43,7 @@ RSpec.describe RuboCop::Cop::RootCops::AvoidRubyProf do
 
   context "when ruby_prof is the only metadata used in an `it` block's definition" do
     it "reports an offense" do
-      expect_offense(<<~RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         let(:foo) { "bar" }
 
         it "asserts some functionality", :ruby_prof do
@@ -56,7 +56,7 @@ RSpec.describe RuboCop::Cop::RootCops::AvoidRubyProf do
 
   context "when there is additional metadata used in an `it` block's definition" do
     it "reports an offense" do
-      expect_offense(<<~RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         let(:foo) { "bar" }
 
         it "asserts some functionality", :foo, :ruby_prof, :bar do
@@ -69,7 +69,7 @@ RSpec.describe RuboCop::Cop::RootCops::AvoidRubyProf do
 
   context "when ruby_prof is used in the body of an `it` block" do
     it "does not report an offense" do
-      expect_no_offenses(<<~RUBY.strip_indent)
+      expect_no_offenses(<<~RUBY)
         it "asserts some functionality" do
           expect(:ruby_prof).to eq(:ruby_prof)
         end
@@ -79,7 +79,7 @@ RSpec.describe RuboCop::Cop::RootCops::AvoidRubyProf do
 
   context "when ruby_prof is used elsewhere" do
     it "does not report an offense" do
-      expect_no_offenses(<<~RUBY.strip_indent)
+      expect_no_offenses(<<~RUBY)
         class Foo
           def bar
             :ruby_prof
@@ -93,7 +93,7 @@ RSpec.describe RuboCop::Cop::RootCops::AvoidRubyProf do
     let(:file_path) { "/tmp/avoid_ruby_prof.rb" }
 
     it "does not report an offense" do
-      expect_no_offenses(<<~RUBY.strip_indent)
+      expect_no_offenses(<<~RUBY)
         it "asserts some functionality", :ruby_prof do
           expect(true).to eq(true)
         end

@@ -25,7 +25,7 @@ RSpec.describe RuboCop::Cop::RootCops::MustInherit, :config do
     end
 
     it "reports an offense when the class doesn't inherit from configured class" do
-      expect_offense(<<~RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         class GreetingsJob < ApplicationJob
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Classes in this directory must inherit from MyJob
         end
@@ -33,7 +33,7 @@ RSpec.describe RuboCop::Cop::RootCops::MustInherit, :config do
     end
 
     it "reports an offense when the class doesn't inherit from anything" do
-      expect_offense(<<~RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         class GreetingsJob
         ^^^^^^^^^^^^^^^^^^ Classes in this directory must inherit from MyJob
         end
@@ -41,21 +41,21 @@ RSpec.describe RuboCop::Cop::RootCops::MustInherit, :config do
     end
 
     it "reports no offenses when the class is the parent class definition" do
-      expect_no_offenses(<<~RUBY.strip_indent)
+      expect_no_offenses(<<~RUBY)
         class MyJob < ApplicationJob
         end
       RUBY
     end
 
     it "reports no offense when specifies the proper class" do
-      expect_no_offenses(<<~RUBY.strip_indent)
+      expect_no_offenses(<<~RUBY)
         class GreetingsJob < MyJob
         end
       RUBY
     end
 
     it "doesn't get messed up by class contents" do
-      expect_offense(<<~RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         class GreetingsJob < ApplicationJob
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Classes in this directory must inherit from MyJob
           queue_as :super_high_priority
@@ -73,7 +73,7 @@ RSpec.describe RuboCop::Cop::RootCops::MustInherit, :config do
     end
 
     it "reports no offense" do
-      expect_no_offenses(<<~RUBY.strip_indent)
+      expect_no_offenses(<<~RUBY)
         class GreetingsController < ApplicationController
         end
       RUBY
