@@ -6,8 +6,13 @@ module RuboCop
     module RootCops
       module Factories
         class FactoryName < Cop
+          SYSTEM_IN_PATH = %r{systems/([^/]+)/}.freeze
+
           def investigate(processed_source)
             file_path = processed_source.buffer.name
+            system_name_match = file_path.match(SYSTEM_IN_PATH)
+
+            @system_name = system_name_match && system_name_match[1]
             @base_file_name = File.basename(file_path, ".rb")
             @base_file_name_body = _generate_body(@base_file_name)
             @base_file_name_last_word = @base_file_name.split("_").last
@@ -22,6 +27,8 @@ module RuboCop
 
             factory_symbol_name = *node.arguments[0]
             factory_name_array = factory_symbol_name[0].id2name.split("__")
+            factory_name_array.shift if factory_name_array.size > 1 && factory_name_array[0] == @system_name
+
             factory_name = factory_name_array.first
             factory_name_body = _generate_body(factory_name)
             factory_name_last_word = factory_name.split("_").last
