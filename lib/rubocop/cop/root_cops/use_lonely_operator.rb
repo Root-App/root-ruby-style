@@ -6,7 +6,7 @@ module RuboCop
 
         def on_send(node)
           _receiver, method_name = *node
-          if %i[try try!].include?(method_name)
+          if %i[try try!].include?(method_name) && node.arguments?
             add_offense(node, :location => :expression, :message => MSG)
           end
         end
