@@ -20,4 +20,12 @@ RSpec.describe RuboCop::Cop::RootCops::UseLonelyOperator do
       foo.bar
     RUBY
   end
+
+  it "doesn't report an offense for uses of try that are not eligible for lonely operator" do
+    expect_no_offenses(<<~RUBY)
+      experiment.try do
+        some_code_to_try
+      end
+    RUBY
+  end
 end
