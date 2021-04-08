@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+gem_name="$(ruby -e 'require "rubygems"; puts Gem::Specification::load(Dir.glob("*.gemspec").first).name')"
+version="$(ruby -e 'require "rubygems"; puts Gem::Specification::load(Dir.glob("*.gemspec").first).version')"
+
+if ! grep -q "$gem_name ($version)" Gemfile.lock; then
+  echo "Detected difference between declared version $version and version in Gemfile.lock. Please run bundle install after upgrading the gem version"
+fi

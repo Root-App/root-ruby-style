@@ -1,6 +1,8 @@
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
+# rubocop:disable RootCops/UseEnvvars
+
 Gem::Specification.new do |gem|
   gem.name          = "root-ruby-style"
   gem.version       = "0.0.3"
@@ -8,6 +10,10 @@ Gem::Specification.new do |gem|
   gem.email         = ["devs@joinroot.com"]
 
   gem.summary       = "Root's Ruby/Rails Style Guide"
+
+  if ENV["BUILDKITE"]
+    gem.metadata["allowed_push_host"] = "#{ENV["ARTIFACTORY_URL"]}/api/gems/engineering-ruby-gems"
+  end
 
   gem.add_runtime_dependency "activesupport", ">= 5.0", "< 7.x"
   gem.add_runtime_dependency "rubocop", "~> 0.80.1"
@@ -18,3 +24,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "pry-byebug"
   gem.add_development_dependency "rspec", "~> 3.8"
 end
+
+# rubocop:enable RootCops/UseEnvvars

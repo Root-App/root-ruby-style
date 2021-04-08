@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+gem_name="$(ruby -e 'require "rubygems"; puts Gem::Specification::load(Dir.glob("*.gemspec").first).name')"
+version="$(ruby -e 'require "rubygems"; puts Gem::Specification::load(Dir.glob("*.gemspec").first).version')"
+package_name="$gem_name-$version.gem"
+
+if gem search "$gem_name" --source "https://$ARTIFACTORY_USER:$ARTIFACTORY_PASSWORD@$ARTIFACTORY_URL/api/gems/engineering-ruby-gems" | grep -q "$version"; then
+  echo "$package_name already published. Not publishing"
+else
+  echo "Building gem"
+  gem build "$gem_name" -o "$package_name"
+
+  echo "Publishing $package_name"
+  # setup credentials
+  curl -u "$ARTIFACTORY_USER:$ARTIFACTORY_PASSWORD" "$ARTIFACTORY_URL/api/gems/$gem_name/api/v1/api_key.yaml" > ~/.gem/credentials
+  chmod 600 ~/.gem/credentials
+  gem push "$package_name"
+fi
