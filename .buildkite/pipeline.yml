@@ -15,3 +15,28 @@ steps:
       docker-compose#v2.5.1:
         run: app
         config: docker-compose.buildkite.yml
+
+  - name: "Ensure gem version"
+    timeout_in_minutes: 5
+    command: .buildkite/ensure_package_version
+    plugins:
+      docker-compose#v2.5.1:
+        run: app
+        config: docker-compose.buildkite.yml
+
+  - wait
+
+  - name: ":artifactory: Publish gem"
+    timeout_in_minutes: 5
+    command: .buildkite/publish
+    plugins:
+      docker-compose#v2.5.1:
+        run: app
+        config: docker-compose.buildkite.yml
+        env:
+          - ARTIFACTORY_PASSWORD
+          - ARTIFACTORY_URL
+          - ARTIFACTORY_USER
+    branches:
+      - master
+      - nv-publish-to-artifactory

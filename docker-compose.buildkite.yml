@@ -2,3 +2,7 @@ version: '2.0'
 services:
   app:
     build: .
+    environment:
+      ARTIFACTORY_USER: 
+      ARTIFACTORY_PASSWORD: 
+      ARTIFACTORY_URL: 
