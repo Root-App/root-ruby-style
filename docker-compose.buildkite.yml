@@ -6,3 +6,4 @@ services:
       ARTIFACTORY_USER: 
       ARTIFACTORY_PASSWORD: 
       ARTIFACTORY_URL: 
+      BUILDKITE: 
