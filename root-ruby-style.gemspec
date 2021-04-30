@@ -1,5 +1,3 @@
-require "rake"
-
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
@@ -13,7 +11,7 @@ Gem::Specification.new do |gem|
 
   gem.summary       = "Root's Ruby/Rails Style Guide"
 
-  gem.files = FileList[".rubocop.yml", "lib/**/*.*"]
+  gem.files = Dir.glob("lib/**/*.*") + [".rubocop.yml"]
 
   if ENV["BUILDKITE"]
     gem.metadata["allowed_push_host"] = "#{ENV["ARTIFACTORY_URL"]}/api/gems/engineering-ruby-gems"
