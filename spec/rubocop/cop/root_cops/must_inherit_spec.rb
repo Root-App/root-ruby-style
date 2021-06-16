@@ -7,6 +7,10 @@ RSpec.describe RuboCop::Cop::RootCops::MustInherit, :config do
         {
           "Dir" => "app/jobs",
           "ParentClass" => "MyJob"
+        },
+        {
+          "Dir" => "systems/**/app/models",
+          "ParentClass" => "MyRecord"
         }
       ]
     }
@@ -62,6 +66,42 @@ RSpec.describe RuboCop::Cop::RootCops::MustInherit, :config do
 
           def perform(*args)
           end
+        end
+      RUBY
+    end
+  end
+
+  context "when the class is inside a globbed directory" do
+    before do
+      allow(described_class).to receive(:expand_path).and_return("/home/me/systems/cops/app/models/greeting.rb")
+    end
+
+    it "reports an offense when the class doesn't inherit from configured class" do
+      expect_offense(<<~RUBY)
+        class Greeting < ActiveRecord::Base
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Classes in this directory must inherit from MyRecord
+        end
+      RUBY
+    end
+
+    it "reports an offense when the class doesn't inherit from anything" do
+      expect_offense(<<~RUBY)
+        class GreetingsJob
+        ^^^^^^^^^^^^^^^^^^ Classes in this directory must inherit from MyRecord
+        end
+      RUBY
+    end
+
+    it "reports no offenses when the class is the parent class definition" do
+      expect_no_offenses(<<~RUBY)
+        class MyRecord < ApplicationRecord
+        end
+      RUBY
+    end
+
+    it "reports no offense when specifies the proper class" do
+      expect_no_offenses(<<~RUBY)
+        class Greeting < MyRecord
         end
       RUBY
     end
