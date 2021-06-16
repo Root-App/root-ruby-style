@@ -45,11 +45,16 @@ module RuboCop
         end
 
         def mapping
-          cop_config["Mapping"] || []
+          @mapping ||= (cop_config["Mapping"] || []).map do |config|
+            {
+              :glob => File.join("**", config["Dir"], "*.rb"),
+              :parent_class => config["ParentClass"]
+            }
+          end
         end
 
         def parent_class_for_current_file
-          mapping.detect { |m| @source_file_path.include?(m["Dir"]) }&.fetch("ParentClass")
+          mapping.detect { |m| File.fnmatch?(m[:glob], @source_file_path) }&.fetch(:parent_class)
         end
       end
     end
