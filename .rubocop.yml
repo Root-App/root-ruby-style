@@ -7,6 +7,7 @@ require:
   - ./lib/rubocop/cop/root_cops/factories/factory_file_name.rb
   - ./lib/rubocop/cop/root_cops/factories/factory_name.rb
   - ./lib/rubocop/cop/root_cops/job_has_queue.rb
+  - ./lib/rubocop/cop/root_cops/must_include.rb
   - ./lib/rubocop/cop/root_cops/must_inherit.rb
   - ./lib/rubocop/cop/root_cops/no_backfills_in_data_migration.rb
   - ./lib/rubocop/cop/root_cops/no_index_on_add_column.rb
@@ -185,6 +186,11 @@ RootCops/UnnecessaryAggregateFailures:
 # MustInherit is off by default because it requires extra configuration within the project that uses it
 # including project must configure the proper Mapping (see MustInherit class for config details)
 RootCops/MustInherit:
+  Enabled: false
+#
+# MustInclude is off by default because it requires extra configuration within the project that uses it
+# including project must configure the proper Mapping (see MustInclude class for config details)
+RootCops/MustInclude:
   Enabled: false
 
 RootCops/Factories/FactoryFileName:
