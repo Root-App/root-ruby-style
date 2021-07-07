@@ -188,3 +188,7 @@ Factories/FactoryFileName:
 Factories/FactoryName:
   Include:
     - '**/spec/factories/*.rb'
+
+RootCops/RetryOnWarning:
+  Include:
+    - '**_job.rb'
