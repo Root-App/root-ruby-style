@@ -1,6 +1,5 @@
-FROM ruby:2.6.5
+FROM ruby:2.7.4
 
-RUN gem install bundler --version 2.0.2
 RUN mkdir /root-ruby-style
 WORKDIR /root-ruby-style
 
