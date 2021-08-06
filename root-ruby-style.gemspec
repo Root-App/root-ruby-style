@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = "root-ruby-style"
-  gem.version       = "0.0.4"
+  gem.version       = "0.0.5"
   gem.authors       = ["Root Devs"]
   gem.email         = ["devs@joinroot.com"]
 
@@ -18,7 +18,7 @@ Gem::Specification.new do |gem|
   end
 
   gem.add_runtime_dependency "activesupport", ">= 5.0", "< 7.x"
-  gem.add_runtime_dependency "rubocop", "~> 0.80.1"
+  gem.add_runtime_dependency "rubocop", "~> 1.18.4"
   gem.add_runtime_dependency "rubocop-performance", "1.5.2"
   gem.add_runtime_dependency "rubocop-rails", "~> 2.5.0"
   gem.add_runtime_dependency "rubocop-rspec", "~> 1.38.1"
