@@ -156,6 +156,12 @@ Style/IfUnlessModifier:
 Style/NumericLiterals:
   MinDigits: 6
 
+Style/OptionalBooleanParameter:
+  Enabled: false
+
+Style/StringConcatenation:
+  Enabled: false
+
 # use raise to raise an exception
 Style/SignalException:
   EnforcedStyle: only_raise
@@ -181,10 +187,10 @@ RootCops/UnnecessaryAggregateFailures:
 RootCops/MustInherit:
   Enabled: false
 
-Factories/FactoryFileName:
+RootCops/Factories/FactoryFileName:
   Include:
     - '**/spec/factories/*.rb'
 
-Factories/FactoryName:
+RootCops/Factories/FactoryName:
   Include:
     - '**/spec/factories/*.rb'
