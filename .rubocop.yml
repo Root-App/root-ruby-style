@@ -194,3 +194,18 @@ RootCops/Factories/FactoryFileName:
 RootCops/Factories/FactoryName:
   Include:
     - '**/spec/factories/*.rb'
+
+RSpec/FactoryBot/CreateList:
+  Enabled: false
+
+Lint/ConstantDefinitionInBlock:
+  Enabled: false
+
+Style/CombinableLoops:
+  Enabled: false
+
+Gemspec/RequiredRubyVersion:
+  Enabled: false
+
+Style/SlicingWithRange:
+  Enabled: false

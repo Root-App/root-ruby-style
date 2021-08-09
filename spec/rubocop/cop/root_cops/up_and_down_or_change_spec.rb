@@ -1,4 +1,4 @@
-require_relative "../../../spec_helper.rb"
+require_relative "../../../spec_helper"
 
 RSpec.describe RuboCop::Cop::RootCops::UpAndDownOrChange do
   subject(:cop) { described_class.new }
