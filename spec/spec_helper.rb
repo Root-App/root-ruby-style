@@ -1,8 +1,10 @@
-require "bundler/setup"
+require "bundler"
 require "pry"
-require_relative "../lib/rubocop/cop/root_cops"
 require "rubocop/rspec/support"
 require "rubocop/cop/root_cops/support/shared_examples"
+require_relative "../lib/rubocop/cop/root_cops"
+
+Bundler.require(:default, :development)
 
 RSpec.configure do |config|
   config.order = :random

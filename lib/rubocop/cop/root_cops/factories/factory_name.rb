@@ -1,5 +1,5 @@
 require "active_support/inflector"
-require_relative "../../../helpers/factories"
+require_relative "../../../helpers/factories.rb"
 
 module RuboCop
   module Cop

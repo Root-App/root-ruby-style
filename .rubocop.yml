@@ -156,12 +156,6 @@ Style/IfUnlessModifier:
 Style/NumericLiterals:
   MinDigits: 6
 
-Style/OptionalBooleanParameter:
-  Enabled: false
-
-Style/StringConcatenation:
-  Enabled: false
-
 # use raise to raise an exception
 Style/SignalException:
   EnforcedStyle: only_raise
@@ -187,25 +181,10 @@ RootCops/UnnecessaryAggregateFailures:
 RootCops/MustInherit:
   Enabled: false
 
-RootCops/Factories/FactoryFileName:
+Factories/FactoryFileName:
   Include:
     - '**/spec/factories/*.rb'
 
-RootCops/Factories/FactoryName:
+Factories/FactoryName:
   Include:
     - '**/spec/factories/*.rb'
-
-RSpec/FactoryBot/CreateList:
-  Enabled: false
-
-Lint/ConstantDefinitionInBlock:
-  Enabled: false
-
-Style/CombinableLoops:
-  Enabled: false
-
-Gemspec/RequiredRubyVersion:
-  Enabled: false
-
-Style/SlicingWithRange:
-  Enabled: false
