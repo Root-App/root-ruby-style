@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    root-ruby-style (0.0.4)
+    root-ruby-style (0.0.5)
       activesupport (>= 5.0, < 7.x)
       rubocop (~> 1.18.4)
       rubocop-performance (= 1.5.2)
@@ -61,7 +61,7 @@ GEM
       rubocop-ast (>= 1.8.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.8.0)
+    rubocop-ast (1.9.1)
       parser (>= 3.0.1.1)
     rubocop-performance (1.5.2)
       rubocop (>= 0.71.0)
