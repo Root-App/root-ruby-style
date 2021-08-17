@@ -187,14 +187,6 @@ RootCops/UnnecessaryAggregateFailures:
 RootCops/MustInherit:
   Enabled: false
 
-RootCops/Factories/FactoryFileName:
-  Include:
-    - '**/spec/factories/*.rb'
-
-RootCops/Factories/FactoryName:
-  Include:
-    - '**/spec/factories/*.rb'
-
 RSpec/FactoryBot/CreateList:
   Enabled: false
 
