@@ -16,6 +16,14 @@ module RuboCop
       #
       #   # good
       #   class BackfillClaimJob < ClaimsJob # ...
+      #
+      # It's also possible to configure multiple options
+      # RootCops/MustInherit:
+      #   Mapping:
+      #     - Dir: engines/claims/app/jobs/
+      #       ParentClass:
+      #         - ResqueJob
+      #         - ShoryukenJob
 
       class MustInherit < Cop
         # entirely so i can stub this in the tests
@@ -35,11 +43,11 @@ module RuboCop
         PATTERN
 
         def on_class(node)
-          return unless (config_superclass_name = parent_class_for_current_file)
+          return unless (class_options = class_options_for_current_file)
 
           find_class_inheritance(node) do |class_name, superclass_name|
-            if class_name.to_s != config_superclass_name && superclass_name.to_s != config_superclass_name
-              add_offense(node, :location => :expression, :message => "Classes in this directory must inherit from #{config_superclass_name}")
+            unless class_name_match?(class_name, superclass_name, class_options)
+              add_offense(node, :location => :expression, :message => "Classes in this directory must inherit from #{class_options_to_s(class_options)}")
             end
           end
         end
@@ -48,13 +56,22 @@ module RuboCop
           @mapping ||= (cop_config["Mapping"] || []).map do |config|
             {
               :glob => File.join("**", config["Dir"], "*.rb"),
-              :parent_class => config["ParentClass"]
+              :parent_class_options => [config["ParentClass"]].flatten
             }
           end
         end
 
-        def parent_class_for_current_file
-          mapping.detect { |m| File.fnmatch?(m[:glob], @source_file_path) }&.fetch(:parent_class)
+        def class_options_for_current_file
+          mapping.detect { |m| File.fnmatch?(m[:glob], @source_file_path) }&.fetch(:parent_class_options)
+        end
+
+        # return true if current class is one of the options or inherits from one of the options
+        def class_name_match?(class_name, superclass_name, class_options)
+          class_options.include?(class_name.to_s) || class_options.include?(superclass_name.to_s)
+        end
+
+        def class_options_to_s(class_options)
+          class_options.join(" or ")
         end
       end
     end
