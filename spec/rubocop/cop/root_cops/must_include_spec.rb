@@ -96,4 +96,65 @@ RSpec.describe RuboCop::Cop::RootCops::MustInclude, :config do
       RUBY
     end
   end
+
+  context "when the module to be included is module nested" do
+    let(:cop_config) do
+      {
+        "Mapping" => [
+          {
+            "Dir" => "app/jobs",
+            "Module" => "FancyJobs::IncludeMe"
+          }
+        ]
+      }
+    end
+
+    before do
+      allow(described_class).to receive(:expand_path).and_return("/home/me/app/jobs/hello_job.rb")
+    end
+
+    it "reports an offence when no modules are included" do
+      expect_offense(<<~RUBY)
+        class HelloJob
+        ^^^^^^^^^^^^^^ Classes in this directory must include FancyJobs::IncludeMe module
+        end
+      RUBY
+    end
+
+    it "reports an offence when the wrong module is included" do
+      expect_offense(<<~RUBY)
+        class HelloJob
+        ^^^^^^^^^^^^^^ Classes in this directory must include FancyJobs::IncludeMe module
+          include IncludeMe
+        end
+      RUBY
+    end
+
+    it "reports an offence when another wrong module is included" do
+      expect_offense(<<~RUBY)
+        class HelloJob
+        ^^^^^^^^^^^^^^ Classes in this directory must include FancyJobs::IncludeMe module
+          include FancyJobs
+        end
+      RUBY
+    end
+
+    it "reports an offence when proper module is included" do
+      expect_no_offenses(<<~RUBY)
+        class HelloJob
+          include FancyJobs::IncludeMe
+        end
+      RUBY
+    end
+
+    it "reports an offence when proper module is included along with other modules" do
+      expect_no_offenses(<<~RUBY)
+        class HelloJob
+          include FancyJobs
+          include FancyJobs::IncludeMe
+          include OtherStuff
+        end
+      RUBY
+    end
+  end
 end

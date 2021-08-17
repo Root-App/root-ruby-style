@@ -120,6 +120,48 @@ RSpec.describe RuboCop::Cop::RootCops::MustInherit, :config do
     end
   end
 
+  context "with a module namespace" do
+    let(:cop_config) do
+      {
+        "Mapping" => [
+          {
+            "Dir" => "systems/**/app/models",
+            "ParentClass" => "Namespace::ParentClass"
+          }
+        ]
+      }
+    end
+
+    before do
+      allow(described_class).to receive(:expand_path).and_return("/home/me/systems/cops/app/models/namespace/greeting.rb")
+    end
+
+    it "reports an offense when the class doesn't inherit from configured class" do
+      expect_offense(<<~RUBY)
+        module Namespace
+          class GreetingsJob < ParentClass
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Classes in this directory must inherit from Namespace::ParentClass
+          end
+        end
+      RUBY
+    end
+
+    it "reports an offense when the class doesn't inherit from anything" do
+      expect_offense(<<~RUBY)
+        class Greeting
+        ^^^^^^^^^^^^^^ Classes in this directory must inherit from Namespace::ParentClass
+        end
+      RUBY
+    end
+
+    it "reports no offenses when the class is the parent class definition" do
+      expect_no_offenses(<<~RUBY)
+        class Greeting < Namespace::ParentClass
+        end
+      RUBY
+    end
+  end
+
   context "with multiple parent class options configured" do
     let(:cop_config) do
       {

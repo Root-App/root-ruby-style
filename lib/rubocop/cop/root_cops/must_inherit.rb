@@ -35,20 +35,13 @@ module RuboCop
           @source_file_path = self.class.expand_path(processed_source.buffer.name)
         end
 
-        def_node_matcher :find_class_inheritance, <<~PATTERN
-          (class
-           (const _ $_child)
-           {(const _ $_parent) $_noparent}
-           _)
-        PATTERN
-
         def on_class(node)
           return unless (class_options = class_options_for_current_file)
 
-          find_class_inheritance(node) do |class_name, superclass_name|
-            unless class_name_match?(class_name, superclass_name, class_options)
-              add_offense(node, :location => :expression, :message => "Classes in this directory must inherit from #{class_options_to_s(class_options)}")
-            end
+          class_name = node.identifier.const_name
+          superclass_name = node.parent_class&.const_name
+          unless class_name_match?(class_name, superclass_name, class_options)
+            add_offense(node, :location => :expression, :message => "Classes in this directory must inherit from #{class_options_to_s(class_options)}")
           end
         end
 
