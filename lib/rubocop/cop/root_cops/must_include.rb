@@ -44,8 +44,7 @@ module RuboCop
         end
 
         def_node_matcher :find_module_inclusion, <<~PATTERN
-          (send nil? :include
-              (const _ $_module_name))
+          (send nil? :include $_module_node)
         PATTERN
 
         def on_class(node)
@@ -56,8 +55,8 @@ module RuboCop
         def on_send(node)
           return unless search_for_inclusion? && !@proper_module_is_included
 
-          find_module_inclusion(node) do |module_name|
-            @proper_module_is_included ||= module_name.to_s == @module_to_include
+          find_module_inclusion(node) do |module_node|
+            @proper_module_is_included ||= module_node.const_name == @module_to_include
           end
         end
 
