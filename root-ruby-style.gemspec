@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = "root-ruby-style"
-  gem.version       = "0.0.5"
+  gem.version       = "0.0.6"
   gem.authors       = ["Root Devs"]
   gem.email         = ["devs@joinroot.com"]
 
