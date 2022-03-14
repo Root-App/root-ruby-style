@@ -6,7 +6,7 @@ module RuboCop
     module RootCops
       module Factories
         class FactoryName < Cop
-          SYSTEM_IN_PATH = %r{systems/([^/]+)/}.freeze
+          SYSTEM_IN_PATH = %r{systems/([^/]+)/}
 
           def investigate(processed_source)
             file_path = processed_source.buffer.name
