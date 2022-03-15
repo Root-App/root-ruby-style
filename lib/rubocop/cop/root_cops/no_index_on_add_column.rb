@@ -2,7 +2,7 @@ module RuboCop
   module Cop
     module RootCops
       class NoIndexOnAddColumn < Cop
-        ACTIVE_RECORD_REGEX = /ActiveRecord::Migration\[\d\.\d\]/.freeze
+        ACTIVE_RECORD_REGEX = /ActiveRecord::Migration\[\d\.\d\]/
         COLLAPSED_MIGRATION_CLASSNAME = "CollapsedMigrations".freeze
         MESSAGE = "Do not use :index option on add_column".freeze
 

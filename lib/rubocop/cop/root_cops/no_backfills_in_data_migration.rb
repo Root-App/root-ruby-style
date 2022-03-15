@@ -2,7 +2,7 @@ module RuboCop
   module Cop
     module RootCops
       class NoBackfillsInDataMigration < Cop
-        ACTIVE_RECORD_REGEX = /ActiveRecord::Migration\[\d\.\d\]/.freeze
+        ACTIVE_RECORD_REGEX = /ActiveRecord::Migration\[\d\.\d\]/
         COLLAPSED_MIGRATION_CLASSNAME = "CollapsedMigrations".freeze
         MESSAGE = "Backfills should happen outside of database migrations".freeze
         ACTIVE_RECORD_PERSISTENCE_METHODS = %i[

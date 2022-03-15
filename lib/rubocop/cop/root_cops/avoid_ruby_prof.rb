@@ -5,7 +5,7 @@ module RuboCop
     module RootCops
       class AvoidRubyProf < Cop
         ERROR = ":ruby_prof is for local use only and should not be committed."
-        FILE_NAME_MATCHER = /_spec\.rb\z/.freeze
+        FILE_NAME_MATCHER = /_spec\.rb\z/
 
         def_node_matcher :spec_block?, <<~PATTERN
           (send nil? {:describe :context :it} ...)
