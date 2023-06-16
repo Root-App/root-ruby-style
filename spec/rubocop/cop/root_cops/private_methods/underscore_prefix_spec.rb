@@ -8,12 +8,12 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::UnderscorePrefix do
           expect_offense(<<~RUBY)
             #{module_or_class} FooService
               def self._method
-              ^^^^^^^^^^^^^^^^ Include a private declaration above the private methods.
+              ^^^^^^^^^^^^^^^^ RootCops/PrivateMethods/UnderscorePrefix: Include a private declaration above the private methods.
                 nil
               end
 
               def _method
-              ^^^^^^^^^^^ Include a private declaration above the private methods.
+              ^^^^^^^^^^^ RootCops/PrivateMethods/UnderscorePrefix: Include a private declaration above the private methods.
                 nil
               end
 
@@ -50,12 +50,12 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::UnderscorePrefix do
               private
 
               def self.method
-              ^^^^^^^^^^^^^^^ Prefix private method names with an underscore. If method should be public, move it above the private scope.
+              ^^^^^^^^^^^^^^^ RootCops/PrivateMethods/UnderscorePrefix: Prefix private method names with an underscore. If method should be public, move it above the private scope.
                 nil
               end
 
               def method
-              ^^^^^^^^^^ Prefix private method names with an underscore. If method should be public, move it above the private scope.
+              ^^^^^^^^^^ RootCops/PrivateMethods/UnderscorePrefix: Prefix private method names with an underscore. If method should be public, move it above the private scope.
                 nil
               end
             end
@@ -92,12 +92,12 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::UnderscorePrefix do
 
                 #{module_or_class} InnerService
                   def self._method
-                  ^^^^^^^^^^^^^^^^ Include a private declaration above the private methods.
+                  ^^^^^^^^^^^^^^^^ RootCops/PrivateMethods/UnderscorePrefix: Include a private declaration above the private methods.
                     nil
                   end
 
                   def _method
-                  ^^^^^^^^^^^ Include a private declaration above the private methods.
+                  ^^^^^^^^^^^ RootCops/PrivateMethods/UnderscorePrefix: Include a private declaration above the private methods.
                     nil
                   end
 
@@ -140,12 +140,12 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::UnderscorePrefix do
                   private
 
                   def self.method
-                  ^^^^^^^^^^^^^^^ Prefix private method names with an underscore. If method should be public, move it above the private scope.
+                  ^^^^^^^^^^^^^^^ RootCops/PrivateMethods/UnderscorePrefix: Prefix private method names with an underscore. If method should be public, move it above the private scope.
                     nil
                   end
 
                   def method
-                  ^^^^^^^^^^ Prefix private method names with an underscore. If method should be public, move it above the private scope.
+                  ^^^^^^^^^^ RootCops/PrivateMethods/UnderscorePrefix: Prefix private method names with an underscore. If method should be public, move it above the private scope.
                     nil
                   end
                 end

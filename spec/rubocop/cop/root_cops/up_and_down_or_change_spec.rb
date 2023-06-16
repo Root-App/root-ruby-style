@@ -7,7 +7,7 @@ RSpec.describe RuboCop::Cop::RootCops::UpAndDownOrChange do
     it "reports an offense" do
       expect_offense(<<~RUBY)
         class CreatePosts < ActiveRecord::Migration[6.0]
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{described_class::MSG}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/UpAndDownOrChange: #{described_class::MSG}
         end
       RUBY
     end

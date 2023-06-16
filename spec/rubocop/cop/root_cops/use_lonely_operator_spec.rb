@@ -4,7 +4,7 @@ RSpec.describe RuboCop::Cop::RootCops::UseLonelyOperator do
   it "reports an offense for try!" do
     expect_offense(<<~RUBY)
       foo.try!(:to_s)
-      ^^^^^^^^^^^^^^^ Use the lonely operator foo&.bar instead of foo.try!(:bar)
+      ^^^^^^^^^^^^^^^ RootCops/UseLonelyOperator: Use the lonely operator foo&.bar instead of foo.try!(:bar)
     RUBY
   end
 

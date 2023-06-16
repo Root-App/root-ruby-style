@@ -6,14 +6,14 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
       it "reports an offense for ENVVARS constant assignment" do
         expect_offense(<<~RUBY)
           CONSTANT = ENVVARS["VAR"]
-          ^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
+          ^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/EnvvarAssignment: Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
         RUBY
       end
 
       it "reports an offense for ENVVARS constant assignment wrapped in another method" do
         expect_offense(<<~RUBY)
           CONSTANT = JSON.parse(ENVVARS["VAR"])
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/EnvvarAssignment: Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
         RUBY
       end
 
@@ -32,14 +32,14 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
       it "reports an offense for ENVVARS ||= assignment" do
         expect_offense(<<~RUBY)
           CONSTANT ||= ENVVARS["VAR"]
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/EnvvarAssignment: Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
         RUBY
       end
 
       it "reports an offense for ENVVARS ||= assignment wrapped in another method" do
         expect_offense(<<~RUBY)
           CONSTANT ||= JSON.parse(ENVVARS["VAR"])
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/EnvvarAssignment: Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
         RUBY
       end
 
@@ -61,7 +61,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
         expect_offense(<<~RUBY)
           class MyClass
             CONSTANT = ENVVARS["VAR"]
-            ^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
+            ^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/EnvvarAssignment: Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
           end
         RUBY
       end
@@ -70,7 +70,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
         expect_offense(<<~RUBY)
           class MyClass
             CONSTANT = JSON.parse(ENVVARS["VAR"])
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/EnvvarAssignment: Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
           end
         RUBY
       end
@@ -95,7 +95,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
         expect_offense(<<~RUBY)
           class MyClass
             CONSTANT ||= ENVVARS["VAR"]
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/EnvvarAssignment: Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
           end
         RUBY
       end
@@ -104,7 +104,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
         expect_offense(<<~RUBY)
           class MyClass
             CONSTANT ||= JSON.parse(ENVVARS["VAR"])
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/EnvvarAssignment: Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
           end
         RUBY
       end
@@ -131,7 +131,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
         expect_offense(<<~RUBY)
           module MyModule
             CONSTANT = ENVVARS["VAR"]
-            ^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
+            ^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/EnvvarAssignment: Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
           end
         RUBY
       end
@@ -140,7 +140,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
         expect_offense(<<~RUBY)
           module MyModule
             CONSTANT = JSON.parse(ENVVARS["VAR"])
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/EnvvarAssignment: Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
           end
         RUBY
       end
@@ -165,7 +165,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
         expect_offense(<<~RUBY)
           module MyModule
             CONSTANT ||= ENVVARS["VAR"]
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/EnvvarAssignment: Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
           end
         RUBY
       end
@@ -174,7 +174,7 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
         expect_offense(<<~RUBY)
           module MyModule
             CONSTANT ||= JSON.parse(ENVVARS["VAR"])
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/EnvvarAssignment: Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method
           end
         RUBY
       end

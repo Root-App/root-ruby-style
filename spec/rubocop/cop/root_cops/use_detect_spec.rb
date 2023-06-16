@@ -4,21 +4,21 @@ RSpec.describe RuboCop::Cop::RootCops::UseDetect do
   it "reports an offense for array literal find" do
     expect_offense(<<~RUBY)
       [1,2,3].find { |x| x.even? }
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Use #detect instead of #find.
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/UseDetect: Use #detect instead of #find.
     RUBY
   end
 
   it "reports an offense for variable find" do
     expect_offense(<<~RUBY)
       something.find { |x| x.even? }
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Use #detect instead of #find.
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/UseDetect: Use #detect instead of #find.
     RUBY
   end
 
   it "reports an offense for symbolized block find" do
     expect_offense(<<~RUBY)
       something.find(&:even?)
-      ^^^^^^^^^^^^^^^^^^^^^^^ Use #detect instead of #find.
+      ^^^^^^^^^^^^^^^^^^^^^^^ RootCops/UseDetect: Use #detect instead of #find.
     RUBY
   end
 
@@ -51,14 +51,14 @@ RSpec.describe RuboCop::Cop::RootCops::UseDetect do
   it "does report an offense for constant find" do
     expect_offense(<<~RUBY)
       NUMBERS.find { |x| x.even? }
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Use #detect instead of #find.
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/UseDetect: Use #detect instead of #find.
     RUBY
   end
 
   it "does report an offense for constant find symbol to proc" do
     expect_offense(<<~RUBY)
       NUMBERS.find(&:even?)
-      ^^^^^^^^^^^^^^^^^^^^^ Use #detect instead of #find.
+      ^^^^^^^^^^^^^^^^^^^^^ RootCops/UseDetect: Use #detect instead of #find.
     RUBY
   end
 end

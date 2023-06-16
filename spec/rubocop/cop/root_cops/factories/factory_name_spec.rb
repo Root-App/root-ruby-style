@@ -92,19 +92,19 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryName do
           expect_offense(<<~RUBY, factory_file_path)
             FactoryBot.define do
               factory :payment do
-              ^^^^^^^^^^^^^^^^ Factory should be in own file or be named the singular form of the file name. OR group closely related factories in the same file and prefix their names with 'user_billings__'.
+              ^^^^^^^^^^^^^^^^ RootCops/Factories/FactoryName: Factory should be in own file or be named the singular form of the file name. OR group closely related factories in the same file and prefix their names with 'user_billings__'.
                 ref { "new-branch" }
                 ref_type { "branch" }
                 master_branch { "master" }
               end
               factory :users_billing do
-              ^^^^^^^^^^^^^^^^^^^^^^ Factory should be in own file or be named the singular form of the file name. OR group closely related factories in the same file and prefix their names with 'user_billings__'.
+              ^^^^^^^^^^^^^^^^^^^^^^ RootCops/Factories/FactoryName: Factory should be in own file or be named the singular form of the file name. OR group closely related factories in the same file and prefix their names with 'user_billings__'.
                 ref { "new-branch" }
                 ref_type { "branch" }
                 master_branch { "master" }
               end
               factory :users_billings do
-              ^^^^^^^^^^^^^^^^^^^^^^^ Factory should be in own file or be named the singular form of the file name. OR group closely related factories in the same file and prefix their names with 'user_billings__'.
+              ^^^^^^^^^^^^^^^^^^^^^^^ RootCops/Factories/FactoryName: Factory should be in own file or be named the singular form of the file name. OR group closely related factories in the same file and prefix their names with 'user_billings__'.
                 ref { "new-branch" }
                 ref_type { "branch" }
                 master_branch { "master" }
@@ -133,19 +133,19 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryName do
           expect_offense(<<~RUBY, factory_file_path)
             FactoryBot.define do
               factory :user_billing__payment do
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Factory name uses incorrect prefix, should be 'user_billings__payment'.
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/Factories/FactoryName: Factory name uses incorrect prefix, should be 'user_billings__payment'.
                 ref { "new-branch" }
                 ref_type { "branch" }
                 master_branch { "master" }
               end
               factory :users_billing__payment do
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Factory name uses incorrect prefix, should be 'user_billings__payment'.
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/Factories/FactoryName: Factory name uses incorrect prefix, should be 'user_billings__payment'.
                 ref { "new-branch" }
                 ref_type { "branch" }
                 master_branch { "master" }
               end
               factory :users_billings__payment do
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Factory name uses incorrect prefix, should be 'user_billings__payment'.
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/Factories/FactoryName: Factory name uses incorrect prefix, should be 'user_billings__payment'.
                 ref { "new-branch" }
                 ref_type { "branch" }
                 master_branch { "master" }
@@ -206,14 +206,14 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryName do
               end
 
               factory :payment do
-              ^^^^^^^^^^^^^^^^ Factory should be in own file or be named the singular form of the file name. OR group closely related factories in the same file and prefix their names with 'user_billings__'.
+              ^^^^^^^^^^^^^^^^ RootCops/Factories/FactoryName: Factory should be in own file or be named the singular form of the file name. OR group closely related factories in the same file and prefix their names with 'user_billings__'.
                 ref { "new-branch" }
                 ref_type { "branch" }
                 master_branch { "master" }
               end
 
               factory :user_billing__payment do
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Factory name uses incorrect prefix, should be 'user_billings__payment'.
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/Factories/FactoryName: Factory name uses incorrect prefix, should be 'user_billings__payment'.
                 ref { "new-branch" }
                 ref_type { "branch" }
                 master_branch { "master" }
@@ -246,13 +246,13 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryName do
           expect_offense(<<~RUBY, factory_file_path)
             FactoryBot.define do
               factory :payment do
-              ^^^^^^^^^^^^^^^^ Factory should be in own file or be named the singular form of the file name. OR group closely related factories in the same file and prefix their names with 'billing_fish__'.
+              ^^^^^^^^^^^^^^^^ RootCops/Factories/FactoryName: Factory should be in own file or be named the singular form of the file name. OR group closely related factories in the same file and prefix their names with 'billing_fish__'.
                 ref { "new-branch" }
                 ref_type { "branch" }
                 master_branch { "master" }
               end
               factory :billings_fish do
-              ^^^^^^^^^^^^^^^^^^^^^^ Factory should be in own file or be named the singular form of the file name. OR group closely related factories in the same file and prefix their names with 'billing_fish__'.
+              ^^^^^^^^^^^^^^^^^^^^^^ RootCops/Factories/FactoryName: Factory should be in own file or be named the singular form of the file name. OR group closely related factories in the same file and prefix their names with 'billing_fish__'.
                 ref { "new-branch" }
                 ref_type { "branch" }
                 master_branch { "master" }
@@ -281,13 +281,13 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryName do
           expect_offense(<<~RUBY, factory_file_path)
             FactoryBot.define do
               factory :billing__payment do
-              ^^^^^^^^^^^^^^^^^^^^^^^^^ Factory name uses incorrect prefix, should be 'billing_fish__payment'.
+              ^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/Factories/FactoryName: Factory name uses incorrect prefix, should be 'billing_fish__payment'.
                 ref { "new-branch" }
                 ref_type { "branch" }
                 master_branch { "master" }
               end
               factory :billing_fishes__payment do
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Factory name uses incorrect prefix, should be 'billing_fish__payment'.
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/Factories/FactoryName: Factory name uses incorrect prefix, should be 'billing_fish__payment'.
                 ref { "new-branch" }
                 ref_type { "branch" }
                 master_branch { "master" }
@@ -314,14 +314,14 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryName do
               end
 
               factory :payment do
-              ^^^^^^^^^^^^^^^^ Factory should be in own file or be named the singular form of the file name. OR group closely related factories in the same file and prefix their names with 'billing_fish__'.
+              ^^^^^^^^^^^^^^^^ RootCops/Factories/FactoryName: Factory should be in own file or be named the singular form of the file name. OR group closely related factories in the same file and prefix their names with 'billing_fish__'.
                 ref { "new-branch" }
                 ref_type { "branch" }
                 master_branch { "master" }
               end
 
               factory :billing__payment do
-              ^^^^^^^^^^^^^^^^^^^^^^^^^ Factory name uses incorrect prefix, should be 'billing_fish__payment'.
+              ^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/Factories/FactoryName: Factory name uses incorrect prefix, should be 'billing_fish__payment'.
                 ref { "new-branch" }
                 ref_type { "branch" }
                 master_branch { "master" }

@@ -251,11 +251,11 @@ RSpec.describe RootCops::EqBeEql do
   subject(:cop) { described_class.new }
 
   OFFENDING_FORMS.each do |offending_form|
-    it_behaves_like "registers an offense", offending_form, described_class::MSG
+    it_behaves_like "registers an offense", offending_form, "RootCops/EqBeEql: #{described_class::MSG}"
   end
 
   OFFENDING_BLOCK_FORMS.each do |offending_form|
-    it_behaves_like "registers an offense", offending_form, described_class::MSG
+    it_behaves_like "registers an offense", offending_form, "RootCops/EqBeEql: #{described_class::MSG}"
   end
 
   VALID_FORMS.each do |valid_form|

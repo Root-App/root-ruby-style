@@ -42,7 +42,7 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::CalledProtected do
           end
 
           protected
-          ^^^^^^^^^ Do not use protected. Use private instead.
+          ^^^^^^^^^ RootCops/PrivateMethods/CalledProtected: Do not use protected. Use private instead.
 
           def self._method
             nil

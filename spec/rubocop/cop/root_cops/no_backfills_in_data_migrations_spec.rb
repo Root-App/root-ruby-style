@@ -26,7 +26,7 @@ RSpec.describe RuboCop::Cop::RootCops::NoBackfillsInDataMigration do
   active_record_persistence_methods.each do |method|
     it "adds an offense when the method #{method} is called within a method inside a migration", :aggregate_failures do
       arrow_string = "^" * (33 + method.length)
-      error_message = "#{arrow_string} Backfills should happen outside of database migrations"
+      error_message = "#{arrow_string} RootCops/NoBackfillsInDataMigration: Backfills should happen outside of database migrations"
 
       expect_offense(<<~RUBY)
         class AddSendNotificationsToClaimUser < ActiveRecord::Migration[5.1]
@@ -45,7 +45,7 @@ RSpec.describe RuboCop::Cop::RootCops::NoBackfillsInDataMigration do
   active_record_persistence_methods.each do |method|
     it "adds an offense when the method #{method} is called within a private method inside a migration", :aggregate_failures do
       arrow_string = "^" * (33 + method.length)
-      error_message = "#{arrow_string} Backfills should happen outside of database migrations"
+      error_message = "#{arrow_string} RootCops/NoBackfillsInDataMigration: Backfills should happen outside of database migrations"
 
       expect_offense(<<~RUBY)
         class AddSendNotificationsToClaimUser < ActiveRecord::Migration[5.1]
@@ -73,7 +73,7 @@ RSpec.describe RuboCop::Cop::RootCops::NoBackfillsInDataMigration do
         class AddSendNotificationsToClaimUser < ActiveRecord::Migration[5.1]
           def up
             safety_assured { execute("potentially harmful sql") }
-                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Backfills should happen outside of database migrations
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RootCops/NoBackfillsInDataMigration: Backfills should happen outside of database migrations
           end
         end
       RUBY
