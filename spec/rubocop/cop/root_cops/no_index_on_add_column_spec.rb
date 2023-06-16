@@ -2,7 +2,7 @@ RSpec.describe RuboCop::Cop::RootCops::NoIndexOnAddColumn do
   subject(:cop) { described_class.new }
 
   it "adds an offense when add_column is called with :index option" do
-    error_message = "#{'^' * 70} Do not use :index option on add_column"
+    error_message = "#{'^' * 70} RootCops/NoIndexOnAddColumn: Do not use :index option on add_column"
     expect_offense(<<~RUBY)
       class AddSendNotificationsToClaimUser < ActiveRecord::Migration[5.1]
         def change
@@ -14,7 +14,7 @@ RSpec.describe RuboCop::Cop::RootCops::NoIndexOnAddColumn do
   end
 
   it "adds an offense when add_column is called with :index and other options" do
-    error_message = "#{'^' * 89} Do not use :index option on add_column"
+    error_message = "#{'^' * 89} RootCops/NoIndexOnAddColumn: Do not use :index option on add_column"
     expect_offense(<<~RUBY)
       class AddSendNotificationsToClaimUser < ActiveRecord::Migration[5.1]
         def change
@@ -36,7 +36,7 @@ RSpec.describe RuboCop::Cop::RootCops::NoIndexOnAddColumn do
   end
 
   it "adds an offense when add_column is called with :index within a private method inside a migration" do
-    error_message = "#{'^' * 70} Do not use :index option on add_column"
+    error_message = "#{'^' * 70} RootCops/NoIndexOnAddColumn: Do not use :index option on add_column"
     expect_offense(<<~RUBY)
       class AddSendNotificationsToClaimUser < ActiveRecord::Migration[5.1]
         def change

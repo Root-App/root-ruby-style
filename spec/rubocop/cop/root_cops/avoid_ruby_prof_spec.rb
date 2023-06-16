@@ -11,7 +11,7 @@ RSpec.describe RuboCop::Cop::RootCops::AvoidRubyProf do
     it "reports an offense" do
       expect_offense(<<~RUBY)
         describe "a class", :ruby_prof do
-                            ^^^^^^^^^^ :ruby_prof is for local use only and should not be committed.
+                            ^^^^^^^^^^ RootCops/AvoidRubyProf: :ruby_prof is for local use only and should not be committed.
           let(:foo) { "bar" }
 
           context "when tested" do
@@ -31,7 +31,7 @@ RSpec.describe RuboCop::Cop::RootCops::AvoidRubyProf do
           let(:foo) { "bar" }
 
           context "when tested", :ruby_prof do
-                                 ^^^^^^^^^^ :ruby_prof is for local use only and should not be committed.
+                                 ^^^^^^^^^^ RootCops/AvoidRubyProf: :ruby_prof is for local use only and should not be committed.
             it "asserts some functionality" do
               expect(foo).to eq("bar")
             end
@@ -47,7 +47,7 @@ RSpec.describe RuboCop::Cop::RootCops::AvoidRubyProf do
         let(:foo) { "bar" }
 
         it "asserts some functionality", :ruby_prof do
-                                         ^^^^^^^^^^ :ruby_prof is for local use only and should not be committed.
+                                         ^^^^^^^^^^ RootCops/AvoidRubyProf: :ruby_prof is for local use only and should not be committed.
           expect(foo).to eq("bar")
         end
       RUBY
@@ -60,7 +60,7 @@ RSpec.describe RuboCop::Cop::RootCops::AvoidRubyProf do
         let(:foo) { "bar" }
 
         it "asserts some functionality", :foo, :ruby_prof, :bar do
-                                               ^^^^^^^^^^ :ruby_prof is for local use only and should not be committed.
+                                               ^^^^^^^^^^ RootCops/AvoidRubyProf: :ruby_prof is for local use only and should not be committed.
           expect(foo).to eq("bar")
         end
       RUBY

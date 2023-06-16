@@ -7,7 +7,7 @@ RSpec.describe RuboCop::Cop::RootCops::UnnecessaryAggregateFailures do
         let(:foo) { "bar" }
 
         it "asserts some functionality", :aggregate_failures do
-                                         ^^^^^^^^^^^^^^^^^^^ :aggregate_failures is unnecessary, it is enabled by default.
+                                         ^^^^^^^^^^^^^^^^^^^ RootCops/UnnecessaryAggregateFailures: :aggregate_failures is unnecessary, it is enabled by default.
           expect(foo).to eq("bar")
         end
       RUBY
@@ -20,7 +20,7 @@ RSpec.describe RuboCop::Cop::RootCops::UnnecessaryAggregateFailures do
         let(:foo) { "bar" }
 
         it "asserts some functionality", :foo, :aggregate_failures, :bar do
-                                               ^^^^^^^^^^^^^^^^^^^ :aggregate_failures is unnecessary, it is enabled by default.
+                                               ^^^^^^^^^^^^^^^^^^^ RootCops/UnnecessaryAggregateFailures: :aggregate_failures is unnecessary, it is enabled by default.
           expect(foo).to eq("bar")
         end
       RUBY

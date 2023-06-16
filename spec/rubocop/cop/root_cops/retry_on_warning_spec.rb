@@ -4,7 +4,7 @@ RSpec.describe RuboCop::Cop::RootCops::RetryOnWarning do
   it "reports an offense for retry_on" do
     expect_offense(<<~RUBY)
       retry_on StandardError
-      ^^^^^^^^^^^^^^^^^^^^^^ Use care when implementing "retry_on". Look for side effects on the retried job before disabling warning. NOTE: Jobs running on SQS cannot wait longer than 15 minutes for retry.
+      ^^^^^^^^^^^^^^^^^^^^^^ RootCops/RetryOnWarning: Use care when implementing "retry_on". Look for side effects on the retried job before disabling warning. NOTE: Jobs running on SQS cannot wait longer than 15 minutes for retry.
     RUBY
   end
 

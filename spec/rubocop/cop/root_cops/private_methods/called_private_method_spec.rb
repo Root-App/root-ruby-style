@@ -26,7 +26,7 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::CalledPrivateMethod do
       expect_offense(<<~RUBY)
         def some_method
           SomeClass._a_private_method
-                    ^^^^^^^^^^^^^^^^^ Do not call private class methods from outside the class. Make the method public if necessary.
+                    ^^^^^^^^^^^^^^^^^ RootCops/PrivateMethods/CalledPrivateMethod: Do not call private class methods from outside the class. Make the method public if necessary.
         end
       RUBY
     end
@@ -37,7 +37,7 @@ RSpec.describe RuboCop::Cop::RootCops::PrivateMethods::CalledPrivateMethod do
       expect_offense(<<~RUBY)
         def some_method
           SomeClass._a_private_method(:argument => 1)
-                    ^^^^^^^^^^^^^^^^^ Do not call private class methods from outside the class. Make the method public if necessary.
+                    ^^^^^^^^^^^^^^^^^ RootCops/PrivateMethods/CalledPrivateMethod: Do not call private class methods from outside the class. Make the method public if necessary.
         end
       RUBY
     end

@@ -36,7 +36,7 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryFileName do
       it "registers an offense" do
         expect_offense(<<-RUBY)
           FactoryBot.define do
-          ^^^^^^^^^^^^^^^^^ Factory file name should be plural (user_billings).
+          ^^^^^^^^^^^^^^^^^ RootCops/Factories/FactoryFileName: Factory file name should be plural (user_billings).
           end
         RUBY
       end
@@ -78,7 +78,7 @@ RSpec.describe RuboCop::Cop::RootCops::Factories::FactoryFileName do
       it "registers an offense" do
         expect_offense(<<-RUBY)
           FactoryBot.define do
-          ^^^^^^^^^^^^^^^^^ Factory file name should be plural (billings).
+          ^^^^^^^^^^^^^^^^^ RootCops/Factories/FactoryFileName: Factory file name should be plural (billings).
           end
         RUBY
       end
