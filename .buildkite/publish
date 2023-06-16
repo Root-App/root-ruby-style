@@ -10,6 +10,7 @@ if gem search "$gem_name" --source "https://$ARTIFACTORY_USER:$ARTIFACTORY_PASSW
   echo "$package_name already published. Not publishing"
 else
   echo "Building gem"
+  mkdir -p ~/.gem
   gem build "$gem_name" -o "$package_name"
 
   echo "Publishing $package_name"
