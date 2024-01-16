@@ -6,7 +6,7 @@ steps:
     timeout_in_minutes: 5
     command: bundle exec rubocop
     plugins:
-      docker-compose#v2.5.1:
+      docker-compose#v4.16.1:
         run: app
         config: docker-compose.buildkite.yml
 
@@ -16,7 +16,7 @@ steps:
     timeout_in_minutes: 5
     command: bundle exec rspec .
     plugins:
-      docker-compose#v2.5.1:
+      docker-compose#v4.16.1:
         run: app
         config: docker-compose.buildkite.yml
 
@@ -26,7 +26,7 @@ steps:
     timeout_in_minutes: 5
     command: .buildkite/ensure_package_version
     plugins:
-      docker-compose#v2.5.1:
+      docker-compose#v4.16.1:
         run: app
         config: docker-compose.buildkite.yml
 
@@ -38,7 +38,7 @@ steps:
     timeout_in_minutes: 5
     command: .buildkite/publish
     plugins:
-      docker-compose#v2.5.1:
+      docker-compose#v4.16.1:
         run: app
         config: docker-compose.buildkite.yml
         env:
