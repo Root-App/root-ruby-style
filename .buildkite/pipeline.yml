@@ -1,36 +1,44 @@
 ---
 steps:
   - name: ":rubocop:"
+    agents:
+    - "queue=default-v6"
     timeout_in_minutes: 5
     command: bundle exec rubocop
     plugins:
-      docker-compose#v2.5.1:
+      docker-compose#v4.16.0:
         run: app
         config: docker-compose.buildkite.yml
 
   - name: ":rspec:"
+    agents:
+    - "queue=default-v6"
     timeout_in_minutes: 5
     command: bundle exec rspec .
     plugins:
-      docker-compose#v2.5.1:
+      docker-compose#v4.16.0:
         run: app
         config: docker-compose.buildkite.yml
 
   - name: "Ensure gem version"
+    agents:
+    - "queue=default-v6"
     timeout_in_minutes: 5
     command: .buildkite/ensure_package_version
     plugins:
-      docker-compose#v2.5.1:
+      docker-compose#v4.16.0:
         run: app
         config: docker-compose.buildkite.yml
 
   - wait
 
   - name: ":artifactory: Publish gem"
+    agents:
+    - "queue=default-v6"
     timeout_in_minutes: 5
     command: .buildkite/publish
     plugins:
-      docker-compose#v2.5.1:
+      docker-compose#v4.16.0:
         run: app
         config: docker-compose.buildkite.yml
         env:
