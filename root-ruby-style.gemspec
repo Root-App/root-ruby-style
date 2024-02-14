@@ -4,12 +4,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 # rubocop:disable RootCops/UseEnvvars
 
 Gem::Specification.new do |gem|
-  gem.name          = "root-ruby-style"
-  gem.version       = "0.0.10"
-  gem.authors       = ["Root Devs"]
-  gem.email         = ["devs@joinroot.com"]
+  gem.name = "root-ruby-style"
+  gem.version = "0.0.11"
+  gem.authors = ["Root Devs"]
+  gem.email = ["devs@joinroot.com"]
 
-  gem.summary       = "Root's Ruby/Rails Style Guide"
+  gem.summary = "Root's Ruby/Rails Style Guide"
 
   gem.files = Dir.glob("lib/**/*.*") + [".rubocop.yml"]
 
@@ -18,7 +18,7 @@ Gem::Specification.new do |gem|
   end
 
   gem.add_runtime_dependency "activesupport", ">= 5.0", "< 8"
-  gem.add_runtime_dependency "rubocop", "~> 1.56"
+  gem.add_runtime_dependency "rubocop", "> 1.60"
   gem.add_runtime_dependency "rubocop-performance", "1.5.2"
   gem.add_runtime_dependency "rubocop-rails", "~> 2.5.0"
   gem.add_runtime_dependency "rubocop-rspec", "~> 1.38.1"
