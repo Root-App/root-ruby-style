@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    root-ruby-style (0.0.11)
+    root-ruby-style (0.0.12)
       activesupport (>= 5.0, < 8)
       rubocop (> 1.60)
       rubocop-performance (= 1.5.2)
@@ -31,12 +31,12 @@ GEM
     diff-lcs (1.5.1)
     drb (2.2.0)
       ruby2_keywords
-    i18n (1.14.1)
+    i18n (1.14.4)
       concurrent-ruby (~> 1.0)
     json (2.7.1)
     language_server-protocol (3.17.0.3)
     method_source (1.0.0)
-    minitest (5.22.2)
+    minitest (5.22.3)
     mutex_m (0.2.0)
     parallel (1.24.0)
     parser (3.3.0.5)
@@ -77,8 +77,8 @@ GEM
       rubocop-ast (>= 1.30.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.30.0)
-      parser (>= 3.2.1.0)
+    rubocop-ast (1.31.2)
+      parser (>= 3.3.0.4)
     rubocop-performance (1.5.2)
       rubocop (>= 0.71.0)
     rubocop-rails (2.5.2)
