@@ -137,9 +137,9 @@ Style/FloatDivision:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-# use 1.8 style hashes
+# Allow use of 1.8 and 1.9 style hashes, but not both in the same hash
 Style/HashSyntax:
-  EnforcedStyle: hash_rockets
+  EnforcedStyle: no_mixed_keys
 
 Style/HashEachMethods:
   Enabled: false
