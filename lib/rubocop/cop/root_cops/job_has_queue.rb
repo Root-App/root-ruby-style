@@ -12,7 +12,7 @@ module RuboCop
 
           send_descendants = node.descendants.select(&:send_type?)
           unless send_descendants.any? { |d| QUEUEING_OPTIONS.include?(d.to_a[1]) || _whitelisted_mixin?(d) }
-            add_offense(node, :location => :expression, :message => MESSAGE)
+            add_offense(node, location: :expression, message: MESSAGE)
           end
         end
 

@@ -8,7 +8,7 @@ module RuboCop
           def on_send(node)
             _receiver, method_name = *node
             if method_name.to_s == "protected"
-              add_offense(node, :location => :selector, :message => MSG)
+              add_offense(node, location: :selector, message: MSG)
             end
           end
         end

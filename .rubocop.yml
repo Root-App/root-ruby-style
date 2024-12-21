@@ -137,9 +137,8 @@ Style/FloatDivision:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-# Allow use of 1.8 and 1.9 style hashes, but not both in the same hash
 Style/HashSyntax:
-  EnforcedStyle: no_mixed_keys
+  EnforcedStyle: ruby19
   EnforcedShorthandSyntax: always
 
 Style/HashEachMethods:

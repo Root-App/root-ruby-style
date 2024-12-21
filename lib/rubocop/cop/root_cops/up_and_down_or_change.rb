@@ -12,7 +12,7 @@ module RuboCop
           return if methods.include?(:change)
           return if methods.include?(:up) && methods.include?(:down)
 
-          add_offense(node, :location => :expression, :message => MSG)
+          add_offense(node, location: :expression, message: MSG)
         end
 
         def_node_matcher :active_record_migration?, <<~PATTERN

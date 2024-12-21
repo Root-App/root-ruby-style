@@ -50,10 +50,10 @@ module RuboCop
             return if method_name.nil?
 
             if method_name =~ /^_/ && @visible
-              add_offense(node, :location => :expression, :message => NEED_PRIVATE)
+              add_offense(node, location: :expression, message: NEED_PRIVATE)
             end
             if method_name !~ /^_/ && !@visible
-              add_offense(node, :location => :expression, :message => NEED_UNDERSCORE)
+              add_offense(node, location: :expression, message: NEED_UNDERSCORE)
             end
           end
 

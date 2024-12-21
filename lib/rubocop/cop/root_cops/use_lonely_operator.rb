@@ -8,7 +8,7 @@ module RuboCop
           _receiver, method_name = *node
 
           if method_name == :try! && node.arguments?
-            add_offense(node, :location => :expression, :message => MSG)
+            add_offense(node, location: :expression, message: MSG)
           end
         end
       end

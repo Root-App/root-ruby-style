@@ -18,7 +18,7 @@ module RuboCop
         def on_sym(node)
           return unless @in_spec_file && node.value == :ruby_prof && spec_block?(node.parent)
 
-          add_offense(node, :location => :expression, :message => ERROR)
+          add_offense(node, location: :expression, message: ERROR)
         end
       end
     end

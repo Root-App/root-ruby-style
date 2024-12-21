@@ -9,7 +9,7 @@ module RuboCop
           _, name = *receiver
 
           if name == :ENV && method_name == :[]
-            add_offense(node, :location => :expression, :message => MSG)
+            add_offense(node, location: :expression, message: MSG)
           end
         end
       end

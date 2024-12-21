@@ -35,7 +35,7 @@ module RuboCop
 
         def investigate_post_walk(_processed_source)
           if search_for_inclusion? && !@proper_module_is_included
-            add_offense(@class_node, :location => :expression, :message => "Classes in this directory must include #{@module_to_include} module")
+            add_offense(@class_node, location: :expression, message: "Classes in this directory must include #{@module_to_include} module")
           end
         end
 
@@ -63,8 +63,8 @@ module RuboCop
         def mapping
           @mapping ||= (cop_config["Mapping"] || []).map do |config|
             {
-              :glob => File.join("**", config["Dir"], "*.rb"),
-              :module => config["Module"]
+              glob: File.join("**", config["Dir"], "*.rb"),
+              module: config["Module"]
             }
           end
         end

@@ -7,7 +7,7 @@ module RootCops
     PATTERN
 
     def on_send(node)
-      add_offense(node, :location => :selector) if tracer(node)
+      add_offense(node, location: :selector) if tracer(node)
     end
   end
 end

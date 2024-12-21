@@ -41,15 +41,15 @@ module RuboCop
           class_name = node.identifier.const_name
           superclass_name = node.parent_class&.const_name
           unless class_name_match?(class_name, superclass_name, class_options)
-            add_offense(node, :location => :expression, :message => "Classes in this directory must inherit from #{class_options_to_s(class_options)}")
+            add_offense(node, location: :expression, message: "Classes in this directory must inherit from #{class_options_to_s(class_options)}")
           end
         end
 
         def mapping
           @mapping ||= (cop_config["Mapping"] || []).map do |config|
             {
-              :glob => File.join("**", config["Dir"], "*.rb"),
-              :parent_class_options => [config["ParentClass"]].flatten
+              glob: File.join("**", config["Dir"], "*.rb"),
+              parent_class_options: [config["ParentClass"]].flatten
             }
           end
         end
