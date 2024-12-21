@@ -28,7 +28,7 @@ require:
   - ./lib/rubocop/cop/root_cops/envvar_assignment.rb
 
 AllCops:
-  TargetRubyVersion: 3.0.2
+  TargetRubyVersion: 3.1.5
 
 Layout/EmptyLineAfterGuardClause:
   Enabled: false
@@ -140,6 +140,7 @@ Style/FrozenStringLiteralComment:
 # Allow use of 1.8 and 1.9 style hashes, but not both in the same hash
 Style/HashSyntax:
   EnforcedStyle: no_mixed_keys
+  EnforcedShorthandSyntax: always
 
 Style/HashEachMethods:
   Enabled: false
