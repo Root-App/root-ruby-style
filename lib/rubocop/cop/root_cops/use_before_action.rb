@@ -7,7 +7,7 @@ module RuboCop
         def on_send(node)
           _receiver, method_name = *node
           if method_name == :before_filter
-            add_offense(node, :location => :expression, :message => MSG)
+            add_offense(node, location: :expression, message: MSG)
           end
         end
       end

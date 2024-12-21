@@ -43,7 +43,7 @@ module RuboCop
           return if @is_collapsed_migration_class && method_name.to_s == "execute"
 
           if FORBIDDEN_METHODS.include?(method_name)
-            add_offense(node, :location => :expression, :message => MESSAGE)
+            add_offense(node, location: :expression, message: MESSAGE)
           end
         end
       end

@@ -8,7 +8,7 @@ module RuboCop
           return unless node.command?(:raise)
 
           node.child_nodes.each do |child|
-            add_offense(child, :location => :expression, :message => MESSAGE) if _str?(child)
+            add_offense(child, location: :expression, message: MESSAGE) if _str?(child)
           end
         end
 

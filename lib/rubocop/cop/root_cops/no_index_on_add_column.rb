@@ -23,7 +23,7 @@ module RuboCop
 
           keys = last.keys.collect(&:value)
 
-          add_offense(node, :location => :expression, :message => MESSAGE) if keys.include?(:index)
+          add_offense(node, location: :expression, message: MESSAGE) if keys.include?(:index)
         end
       end
     end

@@ -11,7 +11,7 @@ module RuboCop
         def on_sym(node)
           return unless node.value == :aggregate_failures && it_block?(node.parent)
 
-          add_offense(node, :location => :expression, :message => ERROR)
+          add_offense(node, location: :expression, message: ERROR)
         end
       end
     end

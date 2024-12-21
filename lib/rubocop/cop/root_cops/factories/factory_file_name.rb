@@ -19,9 +19,9 @@ module RuboCop
             if receiver_name == :FactoryBot && method_name == :define && Helpers::Factories.file_name_has_error?(@base_file_name)
               add_offense(
                 node,
-                :location => :expression,
-                :severity => :fatal,
-                :message => "Factory file name should be plural (#{@base_file_name.pluralize})."
+                location: :expression,
+                severity: :fatal,
+                message: "Factory file name should be plural (#{@base_file_name.pluralize})."
               )
             end
           end

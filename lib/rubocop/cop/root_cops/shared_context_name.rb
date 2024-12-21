@@ -23,7 +23,7 @@ module RuboCop
           method_args = *args[0]
           context_name = method_args[0].to_s
           unless context_name == @base_name || context_name.start_with?(@expected_context_prefix)
-            add_offense(node, :location => :expression, :message => PREFIX_OR_MATCH)
+            add_offense(node, location: :expression, message: PREFIX_OR_MATCH)
           end
         end
       end

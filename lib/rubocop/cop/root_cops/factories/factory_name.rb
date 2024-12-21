@@ -37,16 +37,16 @@ module RuboCop
               if factory_name_array[0] != @base_file_name
                 add_offense(
                   node,
-                  :location => :expression,
-                  :message => "Factory name uses incorrect prefix, should be '#{@base_file_name}__#{factory_name_array[1]}'."
+                  location: :expression,
+                  message: "Factory name uses incorrect prefix, should be '#{@base_file_name}__#{factory_name_array[1]}'."
                 )
               end
 
             elsif (factory_name_body != @base_file_name_body) || (factory_name_last_word.pluralize != @base_file_name_last_word)
               add_offense(
                 node,
-                :location => :expression,
-                :message => "Factory should be in own file or be named the singular form of the file name. OR group closely related factories in the same file and prefix their names with '#{@base_file_name}__'."
+                location: :expression,
+                message: "Factory should be in own file or be named the singular form of the file name. OR group closely related factories in the same file and prefix their names with '#{@base_file_name}__'."
               )
             end
           end

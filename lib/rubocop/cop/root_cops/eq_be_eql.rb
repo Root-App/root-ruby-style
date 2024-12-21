@@ -19,11 +19,11 @@ module RootCops
 
     def on_send(node)
       be_or_eql(node) do |offending_node|
-        add_offense(offending_node, :location => :selector)
+        add_offense(offending_node, location: :selector)
       end
 
       be_true_false_nil(node) do |offending_node|
-        add_offense(offending_node, :location => :selector)
+        add_offense(offending_node, location: :selector)
       end
     end
   end

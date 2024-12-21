@@ -17,7 +17,7 @@ module RuboCop
           return if value.nil?
           return if @is_initializer_file
 
-          add_offense(node, :location => :expression, :message => MSG) if envvar_assignment?(value)
+          add_offense(node, location: :expression, message: MSG) if envvar_assignment?(value)
         end
 
         def on_or_asgn(node)
@@ -26,7 +26,7 @@ module RuboCop
           return unless lhs&.casgn_type?
           return if @is_initializer_file
 
-          add_offense(node, :location => :expression, :message => MSG) if envvar_assignment?(value)
+          add_offense(node, location: :expression, message: MSG) if envvar_assignment?(value)
         end
       end
     end
