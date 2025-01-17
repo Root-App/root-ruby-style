@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    root-ruby-style (0.0.15)
+    root-ruby-style (0.0.16)
       activesupport (>= 5.0, < 8)
       rubocop (> 1.60)
       rubocop-performance (= 1.5.2)
