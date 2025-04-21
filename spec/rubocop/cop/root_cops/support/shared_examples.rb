@@ -1,12 +1,11 @@
 RSpec.shared_examples_for "registers an offense" do |offending_form, error_message|
   it "when using '#{offending_form}'" do
-    inspect_source(<<-RUBY)
+    offenses = inspect_source(<<-RUBY)
       #{offending_form}
     RUBY
-    expect(cop.offenses.size).to eq(1)
 
-    offense = cop.offenses.first
-    expect(offense.message).to eq(error_message)
+    expect(offenses.size).to eq(1)
+    expect(offenses.first.message).to eq(error_message)
   end
 end
 

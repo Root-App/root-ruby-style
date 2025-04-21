@@ -2,7 +2,7 @@ module RuboCop
   module Cop
     module RootCops
       module PrivateMethods
-        class UnderscorePrefix < Cop
+        class UnderscorePrefix < RuboCop::Cop::Base
           NEED_UNDERSCORE = "Prefix private method names with an underscore. If method should be public, move it above the private scope.".freeze
           NEED_PRIVATE = "Include a private declaration above the private methods.".freeze
 
@@ -50,10 +50,10 @@ module RuboCop
             return if method_name.nil?
 
             if method_name =~ /^_/ && @visible
-              add_offense(node, location: :expression, message: NEED_PRIVATE)
+              add_offense(node.loc.expression, message: NEED_PRIVATE)
             end
             if method_name !~ /^_/ && !@visible
-              add_offense(node, location: :expression, message: NEED_UNDERSCORE)
+              add_offense(node.loc.expression, message: NEED_UNDERSCORE)
             end
           end
 

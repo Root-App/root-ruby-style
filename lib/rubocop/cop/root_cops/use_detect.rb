@@ -12,7 +12,7 @@ module RuboCop
       #   [1,2,3].detect { |x| x.even? }
       #   [1,2,3].detect(&:even?)
 
-      class UseDetect < Cop
+      class UseDetect < RuboCop::Cop::Base
         MSG = "Use #detect instead of #find.".freeze
 
         def anything_other_than_class_constant?(node)
@@ -32,7 +32,7 @@ module RuboCop
 
         def on_block(node)
           find_called_with_a_block?(node) do
-            add_offense(node, location: :expression, message: MSG)
+            add_offense(node.loc.expression, message: MSG)
           end
         end
 
@@ -45,7 +45,7 @@ module RuboCop
 
         def on_send(node)
           find_called_with_a_block_as_proc?(node) do
-            add_offense(node, location: :expression, message: MSG)
+            add_offense(node.loc.expression, message: MSG)
           end
         end
       end
