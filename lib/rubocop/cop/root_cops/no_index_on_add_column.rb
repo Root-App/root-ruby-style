@@ -1,7 +1,7 @@
 module RuboCop
   module Cop
     module RootCops
-      class NoIndexOnAddColumn < Cop
+      class NoIndexOnAddColumn < RuboCop::Cop::Base
         ACTIVE_RECORD_REGEX = /ActiveRecord::Migration\[\d\.\d\]/
         COLLAPSED_MIGRATION_CLASSNAME = "CollapsedMigrations".freeze
         MESSAGE = "Do not use :index option on add_column".freeze
@@ -23,7 +23,7 @@ module RuboCop
 
           keys = last.keys.collect(&:value)
 
-          add_offense(node, location: :expression, message: MESSAGE) if keys.include?(:index)
+          add_offense(node.loc.expression, message: MESSAGE) if keys.include?(:index)
         end
       end
     end

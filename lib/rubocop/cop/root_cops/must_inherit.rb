@@ -25,13 +25,13 @@ module RuboCop
       #         - ResqueJob
       #         - ShoryukenJob
 
-      class MustInherit < Cop
+      class MustInherit < RuboCop::Cop::Base
         # entirely so i can stub this in the tests
         def self.expand_path(filename)
           File.expand_path(filename)
         end
 
-        def investigate(processed_source)
+        def on_new_investigation
           @source_file_path = self.class.expand_path(processed_source.buffer.name)
         end
 
@@ -41,7 +41,7 @@ module RuboCop
           class_name = node.identifier.const_name
           superclass_name = node.parent_class&.const_name
           unless class_name_match?(class_name, superclass_name, class_options)
-            add_offense(node, location: :expression, message: "Classes in this directory must inherit from #{class_options_to_s(class_options)}")
+            add_offense(node.loc.expression, message: "Classes in this directory must inherit from #{class_options_to_s(class_options)}")
           end
         end
 

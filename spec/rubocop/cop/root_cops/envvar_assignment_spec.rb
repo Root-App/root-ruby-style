@@ -198,35 +198,21 @@ RSpec.describe RuboCop::Cop::RootCops::EnvvarAssignment do
   end
 
   context "when the file is an initializer" do
-    let(:processed_source) { parse_source(source) }
     let(:filename) { "/config/initializers/file.rb" }
 
-    before do
-      allow(processed_source.buffer).to receive(:name).and_return(filename)
-      _investigate(cop, processed_source)
-    end
-
     context "ENVVARS constant assignment" do
-      let(:source) do
-        <<~RUBY
+      it "does not report an offense" do
+        expect_no_offenses(<<~RUBY, filename)
           CONSTANT = ENVVARS["VAR"]
         RUBY
-      end
-
-      it "does not report an offense" do
-        expect(cop.offenses.size).to eq(0)
       end
     end
 
     context "ENVVARS constant ||= assignment" do
-      let(:source) do
-        <<~RUBY
+      it "does not report an offense" do
+        expect_no_offenses(<<~RUBY, filename)
           CONSTANT ||= ENVVARS["VAR"]
         RUBY
-      end
-
-      it "does not report an offense" do
-        expect(cop.offenses.size).to eq(0)
       end
     end
   end

@@ -1,5 +1,5 @@
 module RootCops
-  class NoTracers < ::RuboCop::Cop::Cop
+  class NoTracers < ::RuboCop::Cop::Base
     MSG = "Remove all `Tracer` occurrences".freeze
 
     def_node_matcher :tracer, <<-PATTERN
@@ -7,7 +7,7 @@ module RootCops
     PATTERN
 
     def on_send(node)
-      add_offense(node, location: :selector) if tracer(node)
+      add_offense(node.loc.selector) if tracer(node)
     end
   end
 end

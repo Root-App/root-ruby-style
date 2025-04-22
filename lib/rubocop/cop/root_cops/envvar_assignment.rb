@@ -1,12 +1,12 @@
 module RuboCop
   module Cop
     module RootCops
-      class EnvvarAssignment < Cop
+      class EnvvarAssignment < RuboCop::Cop::Base
         MSG = "Do not assign an ENVVAR to a constant. Assigning an ENVVAR to a constant has unexpected behavior when used with set_environment_variable. Instead, return the ENVVAR from a method".freeze
 
         def_node_search :envvar_assignment?, "(send (const _ :ENVVARS) :[] (:str _))"
 
-        def investigate(processed_source)
+        def on_new_investigation
           file_path = processed_source.file_path
           @is_initializer_file = file_path.include?("/initializers/")
         end
@@ -17,7 +17,7 @@ module RuboCop
           return if value.nil?
           return if @is_initializer_file
 
-          add_offense(node, location: :expression, message: MSG) if envvar_assignment?(value)
+          add_offense(node.loc.expression, message: MSG) if envvar_assignment?(value)
         end
 
         def on_or_asgn(node)
@@ -26,7 +26,7 @@ module RuboCop
           return unless lhs&.casgn_type?
           return if @is_initializer_file
 
-          add_offense(node, location: :expression, message: MSG) if envvar_assignment?(value)
+          add_offense(node.loc.expression, message: MSG) if envvar_assignment?(value)
         end
       end
     end

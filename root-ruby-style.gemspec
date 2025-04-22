@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name = "root-ruby-style"
-  gem.version = "0.0.17"
+  gem.version = "0.0.18"
   gem.authors = ["Root Devs"]
   gem.email = ["devs@joinroot.com"]
 
@@ -18,13 +18,14 @@ Gem::Specification.new do |gem|
   end
 
   gem.add_runtime_dependency "activesupport", ">= 5.0", "< 8"
-  gem.add_runtime_dependency "rubocop", "> 1.60"
-  gem.add_runtime_dependency "rubocop-performance", "1.5.2"
-  gem.add_runtime_dependency "rubocop-rails", "~> 2.12.0"
-  gem.add_runtime_dependency "rubocop-rspec", "~> 1.38.1"
+  gem.add_runtime_dependency "rubocop", "~> 1.75"
+  gem.add_runtime_dependency "rubocop-factory_bot", "~> 2.27.1"
+  gem.add_runtime_dependency "rubocop-performance", "~> 1.25.0"
+  gem.add_runtime_dependency "rubocop-rails", "~> 2.31.0"
+  gem.add_runtime_dependency "rubocop-rspec", "~> 3.6.0"
 
   gem.add_development_dependency "pry-byebug"
-  gem.add_development_dependency "rspec", "~> 3.8"
+  gem.add_development_dependency "rspec", "~> 3.13"
 end
 
 # rubocop:enable RootCops/UseEnvvars

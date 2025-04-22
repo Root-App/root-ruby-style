@@ -1,7 +1,7 @@
 module RuboCop
   module Cop
     module RootCops
-      class UseEnvvars < Cop
+      class UseEnvvars < RuboCop::Cop::Base
         MSG = %(Use ENVVARS["..."] instead of ENV["..."].).freeze
 
         def on_send(node)
@@ -9,7 +9,7 @@ module RuboCop
           _, name = *receiver
 
           if name == :ENV && method_name == :[]
-            add_offense(node, location: :expression, message: MSG)
+            add_offense(node.loc.expression, message: MSG)
           end
         end
       end

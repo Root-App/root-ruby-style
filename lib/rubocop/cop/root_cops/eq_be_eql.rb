@@ -1,5 +1,5 @@
 module RootCops
-  class EqBeEql < ::RuboCop::Cop::Cop
+  class EqBeEql < ::RuboCop::Cop::Base
     MSG = "Prefer `eq` over `be` and `eql` when checking booleans, numbers, symbols, strings and nil".freeze
 
     def_node_matcher :be_or_eql, <<-PATTERN
@@ -19,11 +19,11 @@ module RootCops
 
     def on_send(node)
       be_or_eql(node) do |offending_node|
-        add_offense(offending_node, location: :selector)
+        add_offense(offending_node.loc.selector)
       end
 
       be_true_false_nil(node) do |offending_node|
-        add_offense(offending_node, location: :selector)
+        add_offense(offending_node.loc.selector)
       end
     end
   end

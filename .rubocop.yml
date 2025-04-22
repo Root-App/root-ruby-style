@@ -1,7 +1,9 @@
-require:
+plugins:
   - rubocop-rails
   - rubocop-performance
   - rubocop-rspec
+  - rubocop-factory_bot
+require:
   - ./lib/rubocop/cop/root_cops/avoid_ruby_prof.rb
   - ./lib/rubocop/cop/root_cops/eq_be_eql.rb
   - ./lib/rubocop/cop/root_cops/factories/factory_file_name.rb
@@ -92,6 +94,9 @@ Rails/FilePath:
 
 RSpec:
   Enabled: true
+
+RSpec/BeEq:
+  Enabled: false
 
 RSpec/ContextWording:
   Enabled: false
@@ -193,7 +198,7 @@ RootCops/MustInherit:
 RootCops/MustInclude:
   Enabled: false
 
-RSpec/FactoryBot/CreateList:
+FactoryBot/CreateList:
   Enabled: false
 
 Lint/ConstantDefinitionInBlock:

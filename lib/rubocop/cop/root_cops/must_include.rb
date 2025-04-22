@@ -20,22 +20,22 @@ module RuboCop
       #     include ClaimsJobConcern
       #   end
 
-      class MustInclude < Cop
+      class MustInclude < RuboCop::Cop::Base
         # entirely so i can stub this in the tests
         def self.expand_path(filename)
           File.expand_path(filename)
         end
 
-        def investigate(processed_source)
+        def on_new_investigation
           @source_file_path = self.class.expand_path(processed_source.buffer.name)
           @module_to_include = module_to_include_for_current_file
           @proper_module_is_included = false
           @class_node = nil
         end
 
-        def investigate_post_walk(_processed_source)
+        def on_investigation_end
           if search_for_inclusion? && !@proper_module_is_included
-            add_offense(@class_node, location: :expression, message: "Classes in this directory must include #{@module_to_include} module")
+            add_offense(@class_node.loc.expression, message: "Classes in this directory must include #{@module_to_include} module")
           end
         end
 
