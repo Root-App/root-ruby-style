@@ -18,10 +18,10 @@ Gem::Specification.new do |gem|
   end
 
   gem.add_runtime_dependency "activesupport", ">= 5.0", "< 8"
-  gem.add_runtime_dependency "rubocop", "~> 1.75"
+  gem.add_runtime_dependency "rubocop", "~> 1.76"
   gem.add_runtime_dependency "rubocop-factory_bot", "~> 2.27.1"
   gem.add_runtime_dependency "rubocop-performance", "~> 1.25.0"
-  gem.add_runtime_dependency "rubocop-rails", "~> 2.31.0"
+  gem.add_runtime_dependency "rubocop-rails", "~> 2.31"
   gem.add_runtime_dependency "rubocop-rspec", "~> 3.6.0"
 
   gem.add_development_dependency "pry-byebug"

@@ -73,7 +73,7 @@ Metrics/PerceivedComplexity:
 
 # prefixes should be avoided before predicates in general, but they make sense
 # in some cases, particularly if an arg is being passed to the method
-Naming/PredicateName:
+Naming/PredicatePrefix:
   Enabled: false
 
 Naming/RescuedExceptionsVariableName:
