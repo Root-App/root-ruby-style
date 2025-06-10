@@ -1,12 +1,12 @@
 PATH
   remote: .
   specs:
-    root-ruby-style (0.0.18)
+    root-ruby-style (0.0.19)
       activesupport (>= 5.0, < 8)
       rubocop (~> 1.75)
       rubocop-factory_bot (~> 2.27.1)
       rubocop-performance (~> 1.25.0)
-      rubocop-rails (~> 2.31.0)
+      rubocop-rails (~> 2.31)
       rubocop-rspec (~> 3.6.0)
 
 GEM
