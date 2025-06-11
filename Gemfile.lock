@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    root-ruby-style (0.0.19)
+    root-ruby-style (0.0.20)
       activesupport (>= 5.0, < 8)
       rubocop (~> 1.76)
       rubocop-factory_bot (~> 2.27.1)
