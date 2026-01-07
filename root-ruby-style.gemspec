@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name = "root-ruby-style"
-  gem.version = "0.0.21"
+  gem.version = "0.0.22"
   gem.authors = ["Root Devs"]
   gem.email = ["devs@joinroot.com"]
 
@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
     gem.metadata["allowed_push_host"] = "#{ENV["ARTIFACTORY_URL"]}/api/gems/engineering-ruby-gems"
   end
 
-  gem.add_runtime_dependency "activesupport", ">= 5.0", "< 8"
+  gem.add_runtime_dependency "activesupport", ">= 5.0"
   gem.add_runtime_dependency "rubocop", "~> 1.76"
   gem.add_runtime_dependency "rubocop-factory_bot", "~> 2.27.1"
   gem.add_runtime_dependency "rubocop-performance", "~> 1.25.0"
