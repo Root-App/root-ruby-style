@@ -1,4 +1,4 @@
-FROM ruby:3.3.7
+FROM ruby:3.4.8
 
 RUN mkdir /root-ruby-style
 WORKDIR /root-ruby-style
