@@ -1,4 +1,4 @@
-FROM ruby:3.3.7
+FROM public.ecr.aws/docker/library/ruby:3.3.10-bookworm
 
 RUN mkdir /root-ruby-style
 WORKDIR /root-ruby-style
