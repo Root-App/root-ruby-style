@@ -58,7 +58,7 @@ GEM
       byebug (~> 13.0)
       pry (>= 0.13, < 0.17)
     racc (1.8.1)
-    rack (3.2.4)
+    rack (3.2.5)
     rainbow (3.1.1)
     regexp_parser (2.11.3)
     reline (0.6.3)
