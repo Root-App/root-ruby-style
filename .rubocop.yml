@@ -41,9 +41,6 @@ Layout/LineLength:
 Layout/MultilineHashKeyLineBreaks:
   Enabled: true
 
-Layout/MultilineMethodArgumentLineBreaks:
-  Enabled: true
-
 Lint/Debugger:
   AutoCorrect: false
 

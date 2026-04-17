@@ -1,6 +1,6 @@
 ### v0.0.24
 
-- Enable `Layout/MultilineHashKeyLineBreaks` and `Layout/MultilineMethodArgumentLineBreaks` to enforce consistent formatting when any key/arg in a multi-line hash or method call wraps to its own line.
+- Enable `Layout/MultilineHashKeyLineBreaks` to enforce that when any key in a multi-line hash literal wraps to its own line, all keys must do the same.
 
 ### v0.0.21
 
