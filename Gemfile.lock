@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    root-ruby-style (0.0.23)
+    root-ruby-style (0.0.24)
       activesupport (>= 5.0)
       rubocop (~> 1.76)
       rubocop-factory_bot (~> 2.27.1)
@@ -118,6 +118,7 @@ GEM
 PLATFORMS
   arm64-darwin-22
   arm64-darwin-24
+  arm64-darwin-25
   x86_64-linux
 
 DEPENDENCIES
