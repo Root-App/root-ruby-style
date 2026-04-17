@@ -38,6 +38,12 @@ Layout/EmptyLineAfterGuardClause:
 Layout/LineLength:
   Enabled: false
 
+Layout/MultilineHashKeyLineBreaks:
+  Enabled: true
+
+Layout/MultilineMethodArgumentLineBreaks:
+  Enabled: true
+
 Lint/Debugger:
   AutoCorrect: false
 
