@@ -1,3 +1,7 @@
+### v0.0.24
+
+- Enable `Layout/MultilineHashKeyLineBreaks` to enforce that when any key in a multi-line hash literal wraps to its own line, all keys must do the same.
+
 ### v0.0.21
 
 - Update rack version.  See #87.
